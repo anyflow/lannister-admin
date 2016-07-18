@@ -1,4 +1,9 @@
 var webpack = require('webpack');
+var plugins = [];
+
+if(process.env.WEBPACK_ENV === 'build') {
+  plugins.push(new webpack.optimize.UglifyJsPlugin({ minimize: true }));
+}
 
 module.exports = {
   entry: './src/index.jsx',
@@ -16,7 +21,8 @@ module.exports = {
         test: /(\.jsx|.js)$/,
         loader: 'react-hot-loader!babel',
         exclude: /node_modules/
-      }
+      }      
     ]
-  }
+  },
+  plugins: plugins
 };
