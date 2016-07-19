@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "WEBPACK_ENV=dev ./node_modules/.bin/webpack --watch --inline",
     "build": "WEBPACK_ENV=build ./node_modules/.bin/webpack",
+    "webpack": "WEBPACK_ENV=dev webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Park Hyunjeong",
