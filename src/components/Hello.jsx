@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-export default React.createClass({
-  render: function () {
-    return <h1>Hello World!</h1>;
+class Hello extends Component {
+  render() {
+    return (
+      <h1>Hello {this.props.name}!</h1>
+    );
   }
-});
+}
+
+export default Hello;

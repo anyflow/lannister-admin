@@ -4,3 +4,4 @@ dist/bundle.js
 
 .vscode
 jsconfig.json
+npm-debug.log
