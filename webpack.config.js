@@ -22,18 +22,16 @@ module.exports = {
     extensions: ['', '.js', '.jsx']                    //FOR omiting extension in import statement.
   },
   module: {
-    preLoaders: [
-      { 
-        test: /(\.jsx|.js)$/,
-        loader: 'eslint',
-        exclude: /node_modules/ 
-      }
-    ],
     loaders: [
       {
         test: /(\.jsx|.js)$/,
         loader: 'react-hot!babel',                     //FOR ES6(babel) and react(react-hot) reloading
         exclude: /node_modules/
+      },
+      { 
+        test: /(\.jsx|.js)$/,
+        loader: 'eslint',
+        exclude: /node_modules/ 
       }
     ]
   },
