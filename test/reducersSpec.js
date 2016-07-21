@@ -10,7 +10,7 @@ describe('reducers', () => {
     const action = setName(name);
 
     const state = reducers(undefined, action);
-    
+    console.log('state : ', state);
     expect(state.actionDefault).to.deep.equal({
       name: name
     });

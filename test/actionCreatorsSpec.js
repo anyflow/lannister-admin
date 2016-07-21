@@ -10,7 +10,7 @@ describe('actionCreators', () => {
 
     const expectedValue = {
       type: actions.SET_NAME,
-      state: name
+      name: name
     };
 
     expect(action).to.deep.equal(expectedValue);

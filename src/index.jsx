@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Hello from './components/Hello';
-import reducer from './reducer';
+import reducers from './reducers';
 import {
   createStore,
   applyMiddleware
@@ -9,7 +9,7 @@ import {
 
 const name = 'Hyunjeong';
 
-const store = createStore(reducer);
+const store = createStore(reducers);
 
 ReactDOM.render(
   <Hello name={name} />,

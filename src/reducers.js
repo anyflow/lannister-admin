@@ -1,19 +1,19 @@
-import { Map } from 'immutable';
-import { combineReducers } from 'redux';
+import * as Immutable from 'immutable';
+import * as Redux from 'redux';
 import * as actions from './actions';
 import { setName } from './actionCreators';
 
-function actionDefault(state = [], action) {
+function actionDefault(state = {}, action) {
   switch (action.type) {
     case actions.SET_NAME:
-      return { name: action.state };
+      return Immutable.Map(state).merge({ name: action.name }).toJS();
 
     default:
       return state;
   }
 }
 
-const reducers = combineReducers({
+const reducers = Redux.combineReducers({
   actionDefault
 });
 
