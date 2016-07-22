@@ -1,17 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Hello from './components/Hello';
 import reducers from './reducers';
-import {
-  createStore,
-  applyMiddleware
-} from 'redux';
+import * as redux from 'redux';
+import { Provider } from 'react-redux';
+import Helloing from './components/Helloing';
 
 const name = 'Hyunjeong';
+const initialState = {
+  actionDefault: {
+    name: name
+  }
+};
 
-const store = createStore(reducers);
+const store = redux.createStore(reducers, initialState);
 
 ReactDOM.render(
-  <Hello name={name} />,
+  <Provider store={store}>
+    <Helloing />
+  </Provider>,
   document.getElementById('app')
 );

@@ -6,13 +6,21 @@ import reducers from '../src/reducers';
 describe('Store', () => {
   it('gets state', () => {
     const name = 'Hyunjeong';
-    const store = createStore(reducers);
+    const initialState = {
+      actionDefault: {
+        name: name
+      }
+    };
+    const store = createStore(reducers, initialState);
+    expect(store.getState()).to.be.deep.equal(initialState);
+    
+    const newName = 'Park';
     let unsubscribe = store.subscribe(() =>
       expect(store.getState().actionDefault).to.be.deep.equal({
-        name: name
+        name: newName
       })
     );
   
-    store.dispatch(setName(name));
+    store.dispatch(setName(newName));
   });
 });
