@@ -11,7 +11,8 @@ class Hello extends React.Component {
     return (
       <div>
         type name : <input onChange={(event) => this.props.setName(event.target.value)} />
-        <h1>Hello {this.props.name}!</h1>
+        <h1>Hello { this.props.name }!</h1>
+        <h3>fetch { self.fetch ? "enable" : "disable" }</h3>
       </div>
     );
   }
