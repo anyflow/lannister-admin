@@ -4,6 +4,7 @@ import reducers from './reducers';
 import * as redux from 'redux';
 import { Provider } from 'react-redux';
 import Helloing from './components/Helloing';
+import { logger } from './middlewares';
 
 const name = 'Hyunjeong';
 const initialState = {
@@ -12,7 +13,7 @@ const initialState = {
   }
 };
 
-const store = redux.createStore(reducers, initialState);
+const store = redux.createStore(reducers, initialState, redux.applyMiddleware(logger));
 
 ReactDOM.render(
   <Provider store={store}>
