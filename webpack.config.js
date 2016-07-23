@@ -3,15 +3,16 @@ var plugins = [
   new webpack.HotModuleReplacementPlugin()
 ];
 
-if(process.env.WEBPACK_ENV === 'build') {
+if(process.env.WEBPACK_ENV === 'dist') {
   plugins.push(new webpack.optimize.UglifyJsPlugin({ minimize: true }));
+  plugins.push(new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }));
 }
 
 module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:8080', //FOR HotModuleReplacement
     'webpack/hot/only-dev-server',                     //FOR HotModuleReplacement
-    './src/index.jsx'
+    './src/index'
   ], 
   output: {
     path: __dirname + '/dist',

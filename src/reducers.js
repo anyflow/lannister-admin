@@ -1,7 +1,6 @@
 import * as Immutable from 'immutable';
 import * as Redux from 'redux';
 import * as actions from './actions';
-import { setName } from './actionCreators';
 
 function actionDefault(state = {}, action) {
   switch (action.type) {

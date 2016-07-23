@@ -1,6 +1,5 @@
-**/node_modules/
-
-dist/bundle.js
+node_modules
+dist
 
 .vscode
 jsconfig.json

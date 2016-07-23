@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "WEBPACK_ENV=dev ./node_modules/.bin/webpack --watch --inline",
-    "build": "WEBPACK_ENV=build ./node_modules/.bin/webpack",
-    "webpack": "WEBPACK_ENV=dev webpack-dev-server",
+    "clean": "rimraf dist/",
+    "copy": "copyfiles -f ./src/index.html ./dist",
+    "dev": "npm run copy && WEBPACK_ENV=dev ./node_modules/.bin/webpack --inline",
+    "dist": "npm run copy && WEBPACK_ENV=dist ./node_modules/.bin/webpack",
+    "serve:dev": "npm run copy && WEBPACK_ENV=dev webpack-dev-server",
+    "serve:dist": "npm run copy && WEBPACK_ENV=dist webpack-dev-server",    
     "test": "mocha --compilers js:babel-core/register --require ./test/testHelper.js \"test/**/*@(.js|.jsx)\"",
     "test:watch": "npm run test -- --watch --watch-extensions jsx"
   },
