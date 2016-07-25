@@ -9,10 +9,9 @@ import Helloing from './containers/Helloing';
 
 require('./index.css');
 
-const name = 'Hyunjeong';
 const initialState = {
   actionDefault: {
-    name: name
+    name: 'World'
   }
 };
 
