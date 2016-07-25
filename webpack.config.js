@@ -33,6 +33,10 @@ module.exports = {
         test: /(\.jsx|.js)$/,
         loader: 'eslint',
         exclude: /node_modules/ 
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css!autoprefixer?browsers=last 2 versions'
       }
     ]
   },

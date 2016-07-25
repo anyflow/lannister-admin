@@ -7,6 +7,8 @@ import reducers from './bases/reducers';
 import { logger } from './bases/middlewares';
 import Helloing from './containers/Helloing';
 
+require('./index.css');
+
 const name = 'Hyunjeong';
 const initialState = {
   actionDefault: {
