@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
-import reducers from './reducers';
 import * as redux from 'redux';
-import Helloing from './components/Helloing';
-import { logger } from './middlewares';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import reducers from './bases/reducers';
+import { logger } from './bases/middlewares';
+import Helloing from './containers/Helloing';
 
 const name = 'Hyunjeong';
 const initialState = {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import Hello from './Hello';
-import * as actionCreators from '../actionCreators';
+import Hello from '../components/Hello';
+import * as actionCreators from '../bases/actionCreators';
 
 function mapStateToProps(state) {
   return {

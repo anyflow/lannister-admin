@@ -1,8 +1,8 @@
 import { fromJS } from 'immutable';
 import { expect } from 'chai';
-import * as actions from '../src/actions';
-import { setName } from '../src/actionCreators';
-import reducers from '../src/reducers';
+import * as actions from '../src/bases/actions';
+import { setName } from '../src/bases/actionCreators';
+import reducers from '../src/bases/reducers';
 
 describe('reducers', () => {
   it('handles SET_NAME', () => {

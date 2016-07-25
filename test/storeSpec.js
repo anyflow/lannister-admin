@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { createStore } from 'redux';
-import { setName } from '../src/actionCreators';
-import reducers from '../src/reducers';
+import { setName } from '../src/bases/actionCreators';
+import reducers from '../src/bases/reducers';
 
 describe('Store', () => {
   it('gets state', () => {
