@@ -1,4 +1,7 @@
 var webpack = require('webpack');
+var precss       = require('precss');
+var autoprefixer = require('autoprefixer');
+
 var plugins = [
   new webpack.HotModuleReplacementPlugin()
 ];
@@ -36,9 +39,12 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style!css!autoprefixer?browsers=last 2 versions'
+        loader: 'style!css!postcss'
       }
     ]
+  },
+  postcss: function () {
+        return [precss, autoprefixer];
   },
   devServer: {
     contentBase: './dist',                             //SET content base of webpack-dev-server 
