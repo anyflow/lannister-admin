@@ -6,6 +6,9 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import reducers from './bases/reducers';
 import { logger } from './bases/middlewares';
 import Helloing from './containers/Helloing';
+import Dashboard from './components/Dashboard';
+import WebsocketClient from './components/WebsocketClient';
+import About from './components/About';
 
 require('./index.css');
 
@@ -30,7 +33,11 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route component={App}>
-        <Route path="/" component={Helloing} />
+        <Route path="/" component={Dashboard} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/websocket_client" component={WebsocketClient} />
+        <Route path="/hello" component={Helloing} />
+        <Route path="/about" component={About} />
       </Route>
     </Router>
   </Provider>,

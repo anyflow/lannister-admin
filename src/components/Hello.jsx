@@ -3,6 +3,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import classNames from 'classnames';
 import { Button } from 'react-bootstrap';
 import FieldGroup from './FieldGroup.jsx';
+import Navigation from './Navigation.jsx';
 
 class Hello extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class Hello extends React.Component {
   render() {
     return (
       <div>
+        <Navigation />
         <FieldGroup
           type="text"
           label="Type your name"
