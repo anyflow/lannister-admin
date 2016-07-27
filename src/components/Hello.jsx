@@ -15,6 +15,7 @@ class Hello extends React.Component {
     return (
       <div>
         <Navigation />
+        <h1 className={classNames('output')}>Hello { this.props.name }!</h1>        
         <FieldGroup
           type="text"
           label="Type your name"
@@ -22,8 +23,6 @@ class Hello extends React.Component {
           help="The name typed will be shown below"
           onChange={(event) => this.props.setName(event.target.value)}
         />
-        <h1 className={classNames('output')}>Hello { this.props.name }!</h1>
-        <Button bsStyle="primary">Button React-Bootstrap Sample</Button>
       </div>
     );
   }
