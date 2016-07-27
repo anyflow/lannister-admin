@@ -2,6 +2,8 @@ var webpack = require('webpack');
 var precss       = require('precss');
 var autoprefixer = require('autoprefixer');
 
+var port = 8080;
+
 var plugins = [
   new webpack.HotModuleReplacementPlugin()
 ];
@@ -12,8 +14,9 @@ if(process.env.WEBPACK_ENV === 'dist') {
 }
 
 module.exports = {
+  port: port,
   entry: [
-    'webpack-dev-server/client?http://localhost:8080', //FOR HotModuleReplacement
+    'webpack-dev-server/client?http://localhost:' + port, //FOR HotModuleReplacement
     'webpack/hot/only-dev-server',                     //FOR HotModuleReplacement
     './src/index'
   ], 
@@ -48,7 +51,8 @@ module.exports = {
   },
   devServer: {
     contentBase: './dist',                             //SET content base of webpack-dev-server 
-    hot: true                                          //FOR react-hot-loader
+    hot: true,                                         //FOR react-hot-loader
+    historyApiFallback: true
   },
   plugins: plugins
 };

@@ -1,34 +1,37 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 import {Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap';
 
 class Navigation extends Component {
   render() {
     return (
-  <Navbar staticTop inverse>
-    <Navbar.Header>
-      <Navbar.Brand>
-        <a href="#/dashboard">Lannister-Dashboard</a>
-      </Navbar.Brand>
-      <Navbar.Toggle />
-    </Navbar.Header>
-    <Navbar.Collapse>
-      <Nav>
-        <NavItem eventKey={1} href="#/dashboard">Dashboard</NavItem>
-        <NavItem eventKey={2} href="#/websocket_client">WebSocket Client</NavItem>
-        <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-          <MenuItem eventKey={3.1}>Action</MenuItem>
-          <MenuItem eventKey={3.2}>Another action</MenuItem>
-          <MenuItem eventKey={3.3}>Something else here</MenuItem>
-          <MenuItem divider />
-          <MenuItem eventKey={3.3}>Separated link</MenuItem>
-        </NavDropdown>
-      </Nav>
-      <Nav pullRight>
-        <NavItem eventKey={1} href="#/about">About</NavItem>
-        <NavItem eventKey={2} href="#/hello">Hello</NavItem>
-      </Nav>
-    </Navbar.Collapse>
-  </Navbar>
+      <Navbar staticTop inverse>
+        <Navbar.Header>
+          <Navbar.Brand>
+            <Link to="/">Lannister-Dashboard</Link>
+          </Navbar.Brand>
+          <Navbar.Toggle />
+        </Navbar.Header>
+        <Navbar.Collapse>
+          <Nav>
+            <LinkContainer to="/dashboard">
+              <NavItem eventKey={1}>Dashboard</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/websocket_client">
+              <NavItem eventKey={2}>WebSocket Client</NavItem>
+            </LinkContainer>
+          </Nav>
+          <Nav pullRight>
+            <LinkContainer to="/about">
+              <NavItem eventKey={1}>About</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/hello">
+              <NavItem eventKey={2}>Hello</NavItem>
+            </LinkContainer>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }
