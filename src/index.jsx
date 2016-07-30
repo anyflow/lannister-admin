@@ -9,6 +9,7 @@ import Helloing from './containers/Helloing';
 import Dashboard from './components/Dashboard';
 import WebsocketClient from './components/WebsocketClient';
 import About from './components/About';
+import Navigation from './components/Navigation';
 
 require('./index.css');
 
@@ -25,7 +26,11 @@ const store = redux.createStore(reducers, initialState, redux.compose(
 
 class App extends Component {
   render() {
-    return this.props.children;
+    return (<div>
+      <Navigation />
+      {this.props.children}
+    </div>
+    );
   }
 }
 
@@ -41,5 +46,5 @@ ReactDOM.render(
       </Route>
     </Router>
   </Provider>,
-  document.getElementById('app')
+   document.getElementById('app')
 );

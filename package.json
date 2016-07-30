@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist/",
-    "test": "mocha --compilers js:babel-core/register --require ./test/testHelper.js \"test/**/*@(.js|.jsx)\"",    
+    "test": "mocha --compilers js:babel-core/register --require ./test/testHelper.js \"test/**/*@(.js|.jsx)\"",
     "dev": "npm run copy && WEBPACK_ENV=dev ./node_modules/.bin/webpack --inline",
     "dist": "npm run copy && WEBPACK_ENV=dist ./node_modules/.bin/webpack",
     "serve:test": "npm run test -- --watch --watch-extensions jsx",
