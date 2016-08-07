@@ -4,6 +4,8 @@ import classNames from 'classnames';
 import { Button } from 'react-bootstrap';
 import FieldGroup from './FieldGroup';
 
+require('../styles/Hello.css');
+
 class Hello extends React.Component {
   constructor(props) {
     super(props);
