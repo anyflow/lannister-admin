@@ -1,34 +1,59 @@
 import React, {Component} from 'react';
 import {Button} from 'react-bootstrap';
 
+var data = [
+  {
+    status: 'disconnected',
+    text: 'Connect',
+    bsStyle: 'success',
+    disabled: false
+  },
+  {
+    status: 'connecting',
+    text: 'Connecting...',
+    bsStyle: 'warning',
+    disabled: false    
+  },
+  {
+    status: 'connected',
+    text: 'Disconnect',
+    bsStyle: 'danger',
+    disabled: false    
+  },
+];
+
 class ConnectButton extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { connected: false };
+    this.state = data[0];
     this.onClick = this.onClick.bind(this);
   }
 
+
   onClick() {
-    this.setState({
-      connected: !this.state.connected
-    }, function () {
+    let newState;
+    switch (this.state.status) {
+      case 'disconnected': newState = data[1]; break;
+      case 'connecting': newState = data[2]; break;
+      case 'connected': newState = data[0]; break;
+    }
+
+    this.setState(newState, function () {
       console.log(this.state);
-      this.changeStyle();
     }.bind(this));
   }
 
-  changeStyle() {
-    this.state.connected ?
-      console.log(this.props) : console.log('false!!');
-  }
   render() {
+    console.log(this.state);
+
     return (
-          <Button bsStyle="primary"
-                  onClick={this.onClick}
-                  className="btn pull-right">
-            Connect
-          </Button>
+      <Button bsStyle={this.state.bsStyle}
+        onClick={this.onClick}
+        className="btn pull-right"
+        disabled={this.state.disabled}>
+        {this.state.text}
+      </Button>
     );
   }
 }

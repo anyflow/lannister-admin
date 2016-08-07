@@ -1,8 +1,22 @@
 .react-bs-table {
   border: 0px;
+  margin: 0px;
+
+  overflow-x: visible;
+  overflow-y: visible;
+  
 }
 
 .checkbox {
   height: 0px;
   margin-top: 0px;
+}
+
+.btn-default {
+  background-image:none;
+}
+
+.dropdown-menu {
+  position: relative;
+  z-index: 1000000
 }
