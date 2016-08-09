@@ -12,13 +12,13 @@ var data = [
     status: 'connecting',
     text: 'Connecting...',
     bsStyle: 'warning',
-    disabled: false    
+    disabled: false
   },
   {
     status: 'connected',
     text: 'Disconnect',
     bsStyle: 'danger',
-    disabled: false    
+    disabled: false
   },
 ];
 
@@ -39,14 +39,10 @@ class ConnectButton extends Component {
       case 'connected': newState = data[0]; break;
     }
 
-    this.setState(newState, function () {
-      console.log(this.state);
-    }.bind(this));
+    this.setState(newState, () => console.log(this.state));
   }
 
   render() {
-    console.log(this.state);
-
     return (
       <Button bsStyle={this.state.bsStyle}
         onClick={this.onClick}
