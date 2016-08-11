@@ -1,5 +1,5 @@
-import io from 'socket.io-client';
 import Immutable from 'immutable';
+import mqtt from 'mqtt';
 import React, {Component} from 'react';
 import {PageHeader, Panel, Button} from 'react-bootstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
@@ -18,20 +18,22 @@ class WebsocketClient extends Component {
   constructor(props) {
     super(props);
 
+    this.client = null;
+
     this.state = {
-      connectionProfile: {
-        basic: basicProfile,
-        advanced: advancedProfile
-      }
+      basicProfile: basicProfile,
+      advancedProfile: advancedProfile,
+      status: 'disconnected'
     };
 
     this.onCleanSessionChange = this.onCleanSessionChange.bind(this);
     this.onWillRetainChange = this.onWillRetainChange.bind(this);
     this.valueFormatter = this.valueFormatter.bind(this);
+    this.onConnectionClick = this.onConnectionClick.bind(this);
   }
 
   onCleanSessionChange(state) {
-    let newBasic = Immutable.List(this.state.connectionProfile.basic).setIn([2],
+    let newBasic = Immutable.List(this.state.basicProfile).setIn([2],
       {
         key: "cleanSession",
         text: "Clean Session",
@@ -40,29 +42,23 @@ class WebsocketClient extends Component {
     );
 
     let newState = {
-      connectionProfile: {
-        basic: newBasic.toArray(),
-        advanced: this.state.connectionProfile.advanced
-      }
+      basicProfile: newBasic.toArray(),
     };
 
     this.setState(newState, () => console.log(this.state));
   }
 
   onWillRetainChange(state) {
-    let newBasic = Immutable.List(this.state.connectionProfile.basic).setIn([4],
+    let newBasic = Immutable.List(this.state.basicProfile).setIn([4],
       {
         key: "willRetain",
-        text: "Will Retain", 
+        text: "Will Retain",
         value: state.checked
       }
     );
 
     let newState = {
-      connectionProfile: {
-        basic: newBasic.toArray(),
-        advanced: this.state.connectionProfile.advanced
-      }
+      basicProfile: newBasic.toArray(),
     };
 
     this.setState(newState, () => console.log(this.state));
@@ -73,13 +69,13 @@ class WebsocketClient extends Component {
       case 'cleanSession':
         return (
           <Checkbox checked={cell}
-                    onChange={this.onCleanSessionChange} />
+            onChange={this.onCleanSessionChange} />
         );
 
       case 'willRetain':
         return (
           <Checkbox checked={cell}
-                    onChange={this.onWillRetainChange} />
+            onChange={this.onWillRetainChange} />
         );
 
       case 'mqttVersion':
@@ -95,6 +91,28 @@ class WebsocketClient extends Component {
     }
   }
 
+  onConnectionClick(status) {
+    switch (status) {
+      case 'disconnected':
+        this.client = mqtt.connect(this.state.basicProfile[0].value);
+
+        this.setState({ status: 'connecting' });
+
+        this.client.on('connect', () => {
+          this.setState({ status: 'connected' }, () => console.log(this.state.status));
+        });
+        return;
+
+      case 'connected':
+        this.client.end(false, () => {
+          this.setState({ status: 'disconnected' }, () => console.log(this.state.status));
+        });
+        return;
+
+      default: return;
+    }
+  }
+
   render() {
     return (
       <div>
@@ -102,7 +120,7 @@ class WebsocketClient extends Component {
           <div className="row">
             <div className="col-xs-6">
               <h4>Basic profile</h4>
-              <BootstrapTable data={this.state.connectionProfile.basic}
+              <BootstrapTable data={this.state.basicProfile}
                 condensed={true}
                 hover={true}
                 striped={true}>
@@ -112,7 +130,7 @@ class WebsocketClient extends Component {
             </div>
             <div className="col-xs-6">
               <h4>Advanced profile</h4>
-              <BootstrapTable data={this.state.connectionProfile.advanced}
+              <BootstrapTable data={this.state.advancedProfile}
                 condensed={true}
                 hover={true}
                 striped={true}>
@@ -121,7 +139,7 @@ class WebsocketClient extends Component {
               </BootstrapTable>
             </div>
           </div>
-          <ConnectButton />
+          <ConnectButton onClick={this.onConnectionClick} status={this.state.status}/>
 
         </Panel>
       </div>

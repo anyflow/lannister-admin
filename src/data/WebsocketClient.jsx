@@ -2,7 +2,7 @@ let basicProfile = [
   {
     key: "mqttBrokerAddress",
     text: "MQTT Broker Address",
-    value: "mqtt://localhost:2883"
+    value: "ws://anyflow.iptime.org:2883/mqtt"
   },
   {
     key: "clientId",
