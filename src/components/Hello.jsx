@@ -1,15 +1,21 @@
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import classNames from 'classnames';
 import { Button } from 'react-bootstrap';
 import FieldGroup from './FieldGroup';
+import { connect } from 'react-redux';
+import * as actionCreators from '../bases/actionCreators';
 
 require('../styles/Hello.css');
 
-class Hello extends React.Component {
+function mapStateToProps(state) {
+  return {
+    name: state.Hello.name
+  }
+}
+
+class HelloPage extends React.Component {
   constructor(props) {
     super(props);
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   render() {
@@ -28,4 +34,7 @@ class Hello extends React.Component {
   }
 }
 
-export default Hello;
+export default connect(
+  mapStateToProps,
+  actionCreators
+)(HelloPage);

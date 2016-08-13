@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 class EditableLabel extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class EditableLabel extends Component {
     this.textChanged = this.textChanged.bind(this);
     this.inputLostFocus = this.inputLostFocus.bind(this);
     this.keyPressed = this.keyPressed.bind(this);
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   labelDoubleClicked() {

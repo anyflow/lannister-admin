@@ -5,7 +5,7 @@ import * as redux from 'redux';
 import { Router, Route, IndexRedirect, browserHistory } from 'react-router';
 import reducers from './bases/reducers';
 import { logger } from './bases/middlewares';
-import Helloing from './containers/Helloing';
+import Hello from './components/Hello';
 import Dashboard from './components/Dashboard';
 import WebsocketClient from './components/WebsocketClient';
 import About from './components/About';
@@ -37,7 +37,7 @@ ReactDOM.render(
         <IndexRedirect to="/hello" />
         <Route path="dashboard" component={Dashboard} />
         <Route path="websocket_client" component={WebsocketClient} />
-        <Route path="hello" component={Helloing} />
+        <Route path="hello" component={Hello} />
         <Route path="about" component={About} />
       </Route>
     </Router>

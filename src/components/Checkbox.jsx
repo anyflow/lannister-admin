@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 class Checkbox extends Component {
   constructor(props) {
@@ -6,6 +7,7 @@ class Checkbox extends Component {
 
     this.state = { checked: props.checked };
     this.onChange = this.onChange.bind(this);
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   onChange() {
@@ -18,8 +20,8 @@ class Checkbox extends Component {
     return (
       <div>
         <input type="checkbox"
-               defaultChecked={this.state.checked}
-               onChange={this.onChange} />
+          defaultChecked={this.state.checked}
+          onChange={this.onChange} />
       </div>
     );
   }

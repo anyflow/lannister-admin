@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import classNames from 'classnames';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 import $ from 'jquery';
 
 require('../styles/Panel.css');
@@ -10,6 +11,7 @@ class Panel extends Component {
 
     this.state = { collapsed: this.props.collapsed };
     this.onClick = this.onClick.bind(this);
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   componentDidMount() {

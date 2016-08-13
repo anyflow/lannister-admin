@@ -1,12 +1,10 @@
 import Immutable from 'immutable';
 import mqtt from 'mqtt';
 import React, {Component} from 'react';
-import {PageHeader, Button} from 'react-bootstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 import Panel from './Panel';
 import Checkbox from './Checkbox';
-import FieldGroup from './FieldGroup';
-import UserCredential from './UserCredential';
 import ConnectButton from './ConnectButton';
 import EditableLabel from './EditableLabel';
 import Dropdown from './Dropdown';
@@ -24,9 +22,8 @@ class ConnectionProfileComponent extends Component {
   constructor(props) {
     super(props);
 
-    this.client = null;
-
     this.valueFormatter = this.valueFormatter.bind(this);
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   valueFormatter(cell, row) {

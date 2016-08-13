@@ -4,6 +4,7 @@ const initialState = {
   Hello: {
     name: 'World'
   },
+  
   WebsocketClient: {
     connectionStatus: 'disconnected',
     connectionProfile: {

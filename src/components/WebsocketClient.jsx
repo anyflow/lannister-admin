@@ -8,7 +8,7 @@ import * as actionCreators from '../bases/actionCreators';
 function mapStateToProps(state) {
   return {
     connectionStatus: state.WebsocketClient.connectionStatus
-  }
+  };
 }
 
 class WebsocketClientPage extends Component {
