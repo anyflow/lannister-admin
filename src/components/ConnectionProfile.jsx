@@ -10,57 +10,23 @@ import UserCredential from './UserCredential';
 import ConnectButton from './ConnectButton';
 import EditableLabel from './EditableLabel';
 import Dropdown from './Dropdown';
-import { basicProfile, advancedProfile } from '../data/ConnectionProfile';
+import { connect } from 'react-redux';
+import * as actionCreators from '../bases/actionCreators';
 
 require('react-bootstrap-table/css/react-bootstrap-table-all.min.css');
 require('../styles/ConnectionProfile.css');
 
-class ConnectionProfile extends Component {
+function mapStateToProps(state) {
+  return state.WebsocketClient.connectionProfile;
+}
+
+class ConnectionProfileComponent extends Component {
   constructor(props) {
     super(props);
 
     this.client = null;
 
-    this.state = {
-      basicProfile: basicProfile,
-      advancedProfile: advancedProfile
-    };
-
-    this.onCleanSessionChange = this.onCleanSessionChange.bind(this);
-    this.onWillRetainChange = this.onWillRetainChange.bind(this);
     this.valueFormatter = this.valueFormatter.bind(this);
-  }
-
-  onCleanSessionChange(state) {
-    let newBasic = Immutable.List(this.state.basicProfile).setIn([2],
-      {
-        key: "cleanSession",
-        text: "Clean Session",
-        value: state.checked
-      }
-    );
-
-    let newState = {
-      basicProfile: newBasic.toArray(),
-    };
-
-    this.setState(newState, () => console.log(this.state));
-  }
-
-  onWillRetainChange(state) {
-    let newBasic = Immutable.List(this.state.basicProfile).setIn([4],
-      {
-        key: "willRetain",
-        text: "Will Retain",
-        value: state.checked
-      }
-    );
-
-    let newState = {
-      basicProfile: newBasic.toArray(),
-    };
-
-    this.setState(newState, () => console.log(this.state));
   }
 
   valueFormatter(cell, row) {
@@ -68,13 +34,13 @@ class ConnectionProfile extends Component {
       case 'cleanSession':
         return (
           <Checkbox checked={cell}
-            onChange={this.onCleanSessionChange} />
+                    onChange={(state) => this.props.setCleanSession(state.checked)} />
         );
 
       case 'willRetain':
         return (
           <Checkbox checked={cell}
-            onChange={this.onWillRetainChange} />
+                    onChange={(state) => this.props.setWillRetain(state.checked)} />
         );
 
       case 'mqttVersion':
@@ -98,7 +64,7 @@ class ConnectionProfile extends Component {
         <div className="row">
           <div className="col-xs-6">
             <h4>Basic profile</h4>
-            <BootstrapTable data={this.state.basicProfile}
+            <BootstrapTable data={this.props.basicProfile}
               condensed={true}
               hover={true}
               striped={true}>
@@ -108,7 +74,7 @@ class ConnectionProfile extends Component {
           </div>
           <div className="col-xs-6">
             <h4>Advanced profile</h4>
-            <BootstrapTable data={this.state.advancedProfile}
+            <BootstrapTable data={this.props.advancedProfile}
               condensed={true}
               hover={true}
               striped={true}>
@@ -121,5 +87,10 @@ class ConnectionProfile extends Component {
     );
   }
 }
+
+const ConnectionProfile = connect(
+  mapStateToProps,
+  actionCreators
+)(ConnectionProfileComponent);
 
 export default ConnectionProfile;

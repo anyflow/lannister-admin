@@ -13,3 +13,17 @@ export function setConnectionStatus(status) {
     status: status
   };
 }
+
+export function setCleanSession(value) {
+  return {
+    type: actions.SET_CLEAN_SESSION,
+    value: value
+  }
+};
+
+export function setWillRetain(value) {
+  return {
+    type: actions.SET_WILL_RETAIN,
+    value: value
+  };
+}
