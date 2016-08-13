@@ -6,3 +6,10 @@ export function setName(name) {
     name: name
   };
 }
+
+export function setConnectionStatus(status) {
+  return {
+    type: actions.SET_CONNECTION_STATUS,
+    status: status
+  };
+}

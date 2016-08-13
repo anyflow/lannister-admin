@@ -10,14 +10,9 @@ import Dashboard from './components/Dashboard';
 import WebsocketClient from './components/WebsocketClient';
 import About from './components/About';
 import Navigation from './components/Navigation';
+import initialState from './data/initialState';
 
 require('./index.css');
-
-const initialState = {
-  actionDefault: {
-    name: 'World'
-  }
-};
 
 const store = redux.createStore(reducers, initialState, redux.compose(
   redux.applyMiddleware(logger),
@@ -26,10 +21,11 @@ const store = redux.createStore(reducers, initialState, redux.compose(
 
 class App extends Component {
   render() {
-    return (<div>
-      <Navigation />
-      {this.props.children}
-    </div>
+    return (
+      <div>
+        <Navigation />
+        {this.props.children}
+      </div>
     );
   }
 }
@@ -46,5 +42,5 @@ ReactDOM.render(
       </Route>
     </Router>
   </Provider>,
-   document.getElementById('app')
+  document.getElementById('app')
 );

@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
 import Hello from '../components/Hello';
+import { connect } from 'react-redux';
 import * as actionCreators from '../bases/actionCreators';
 
 function mapStateToProps(state) {
   return {
-    name: state.actionDefault.name
+    name: state.Hello.name
   }
 }
 

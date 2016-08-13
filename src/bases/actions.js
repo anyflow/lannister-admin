@@ -1,1 +1,3 @@
 export const SET_NAME = 'SET_NAME';
+
+export const SET_CONNECTION_STATUS = 'SET_CONNECTION_STATUS';
