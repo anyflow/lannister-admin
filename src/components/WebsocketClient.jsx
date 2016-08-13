@@ -1,8 +1,9 @@
 import Immutable from 'immutable';
 import mqtt from 'mqtt';
 import React, {Component} from 'react';
-import {PageHeader, Panel, Button} from 'react-bootstrap';
+import {PageHeader, Button} from 'react-bootstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import Panel from './Panel';
 import Checkbox from './Checkbox';
 import FieldGroup from './FieldGroup';
 import UserCredential from './UserCredential';
@@ -116,7 +117,9 @@ class WebsocketClient extends Component {
   render() {
     return (
       <div>
-        <Panel header="Connection Profile">
+        <Panel title="Connection Profile"
+               subtitle="values can be changed with double clicking"
+               collapsed={this.state.status == 'connected'}>
           <div className="row">
             <div className="col-xs-6">
               <h4>Basic profile</h4>
@@ -139,9 +142,8 @@ class WebsocketClient extends Component {
               </BootstrapTable>
             </div>
           </div>
-          <ConnectButton onClick={this.onConnectionClick} status={this.state.status}/>
-
         </Panel>
+        <ConnectButton onClick={this.onConnectionClick} status={this.state.status}/>
       </div>
     );
   }

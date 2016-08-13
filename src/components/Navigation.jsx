@@ -6,7 +6,7 @@ import {LinkContainer} from 'react-router-bootstrap';
 class Navigation extends Component {
   render() {
     return (
-      <Navbar staticTop inverse>
+      <Navbar staticTop>
         <Navbar.Header>
           <Navbar.Brand>
             <Link to="/">Lannister-Dashboard</Link>
