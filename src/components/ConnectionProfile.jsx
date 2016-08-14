@@ -10,6 +10,7 @@ import EditableLabel from './EditableLabel';
 import Dropdown from './Dropdown';
 import { connect } from 'react-redux';
 import * as actionCreators from '../bases/actionCreators';
+import { basicProfileTemplate, advancedProfileTemplate } from '../data/ConnectionProfile';
 
 require('react-bootstrap-table/css/react-bootstrap-table-all.min.css');
 require('../styles/ConnectionProfile.css');
@@ -22,22 +23,41 @@ class ConnectionProfileComponent extends Component {
   constructor(props) {
     super(props);
 
-    this.valueFormatter = this.valueFormatter.bind(this);
+    this._valueFormatter = this._valueFormatter.bind(this);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
-  valueFormatter(cell, row) {
+  componentWillMount() {
+    this.basicProfile = this._initialize('basicProfile', basicProfileTemplate);
+    this.advancedProfile = this._initialize('advancedProfile', advancedProfileTemplate);
+  }
+
+  _initialize(profileName, profileTemplate) {
+    let ret = Immutable.List(profileTemplate);
+
+    for (let i = 0; i < profileTemplate.length; ++i) {
+      let item = ret.get(i);
+
+      item.value = this.props[profileName][profileTemplate[i].key];
+      ret = ret.set(i, item);
+    }
+
+    console.log(ret.toJS());
+    return ret.toJS();
+  }
+
+  _valueFormatter(cell, row) {
     switch (row.key) {
       case 'cleanSession':
         return (
           <Checkbox checked={cell}
-                    onChange={(state) => this.props.setCleanSession(state.checked)} />
+            onChange={(state) => this.props.setBasicProfile(row.key, state.checked) } />
         );
 
       case 'willRetain':
         return (
           <Checkbox checked={cell}
-                    onChange={(state) => this.props.setWillRetain(state.checked)} />
+            onChange={(state) => this.props.setBasicProfile(row.key, state.checked) } />
         );
 
       case 'mqttVersion':
@@ -48,7 +68,7 @@ class ConnectionProfileComponent extends Component {
 
       default:
         return (
-          <EditableLabel text={cell} />
+          <EditableLabel id={row.key} text={cell} />
         );
     }
   }
@@ -61,22 +81,22 @@ class ConnectionProfileComponent extends Component {
         <div className="row">
           <div className="col-xs-6">
             <h4>Basic profile</h4>
-            <BootstrapTable data={this.props.basicProfile}
+            <BootstrapTable data={this.basicProfile}
               condensed={true}
               hover={true}
               striped={true}>
               <TableHeaderColumn dataField="text" isKey={true} dataSort={true} width="150">Parameter</TableHeaderColumn>
-              <TableHeaderColumn dataField="value" dataFormat={this.valueFormatter}>Value</TableHeaderColumn>
+              <TableHeaderColumn dataField="value" dataFormat={this._valueFormatter}>Value</TableHeaderColumn>
             </BootstrapTable>
           </div>
           <div className="col-xs-6">
             <h4>Advanced profile</h4>
-            <BootstrapTable data={this.props.advancedProfile}
+            <BootstrapTable data={this.advancedProfile}
               condensed={true}
               hover={true}
               striped={true}>
               <TableHeaderColumn dataField="text" isKey={true} dataSort={true} width="150">Parameter</TableHeaderColumn>
-              <TableHeaderColumn dataField="value" dataFormat={this.valueFormatter}>Value</TableHeaderColumn>
+              <TableHeaderColumn dataField="value" dataFormat={this._valueFormatter}>Value</TableHeaderColumn>
             </BootstrapTable>
           </div>
         </div>

@@ -14,16 +14,22 @@ export function setConnectionStatus(status) {
   };
 }
 
-export function setCleanSession(value) {
+export function setBasicProfile(parameter, value) {
   return {
-    type: actions.SET_CLEAN_SESSION,
-    value: value
+    type: actions.SET_BASIC_PROFILE,
+    profile: {
+      parameter: parameter,
+      value: value
+    }
   }
 };
 
-export function setWillRetain(value) {
+export function setAdvancedProfile(parameter, value) {
   return {
-    type: actions.SET_WILL_RETAIN,
-    value: value
-  };
-}
+    type: actions.SET_ADVANCED_PROFILE,
+    profile: {
+      parameter: parameter,
+      value: value
+    }
+  }
+};

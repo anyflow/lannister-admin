@@ -1,18 +1,21 @@
-let basicProfile = [
+import * as Immutable from 'immutable';
+import initialState from './initialState';
+
+let basicProfileTemplate = [
   {
     key: "mqttBrokerAddress",
     text: "MQTT Broker Address",
-    value: "ws://anyflow.iptime.org:2883/mqtt"
+    value: ""
   },
   {
     key: "clientId",
     text: "Client ID",
-    value: "randomClientID"
+    value: ""
   },
   {
     key: "cleanSession",
     text: "Clean Session",
-    value: true
+    value: false
   },
   {
     key: "willQos",
@@ -22,35 +25,35 @@ let basicProfile = [
   {
     key: "willRetain",
     text: "Will Retain",
-    value: true
+    value: false
   },
   {
     key: "willTopic",
     text: "Will Topic",
-    value: "will_topic_value"
+    value: ""
   },
   {
     key: "willMessage",
     text: "Will Message",
-    value: "will_message_value"
+    value: ""
   },
 ];
 
-let advancedProfile = [
+let advancedProfileTemplate = [
   {
     key: "userName",
     text: "User Name",
-    value: "anyflow"
+    value: ""
   },
   {
     key: "password",
     text: "Password",
-    value: "somePassword"
+    value: ""
   },
   {
     key: "mqttVersion",
     text: "MQTT version",
-    value: "3.1.1"
+    value: ""
   },
   {
     key: "connectionTimeout",
@@ -64,4 +67,4 @@ let advancedProfile = [
   },
 ];
 
-export { basicProfile, advancedProfile };
+export { basicProfileTemplate, advancedProfileTemplate };
