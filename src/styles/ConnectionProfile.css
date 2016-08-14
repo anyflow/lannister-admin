@@ -12,10 +12,6 @@
   margin-top: 0px;
 }
 
-.btn-default {
-  background-image:none;
-}
-
 .dropdown-menu {
   position: relative;
   z-index: 1000000

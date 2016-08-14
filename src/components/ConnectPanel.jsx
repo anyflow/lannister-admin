@@ -4,9 +4,9 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import ConnectButton from './ConnectButton';
 import $ from 'jquery';
 
-require('../styles/Panel.css');
+require('../styles/ConnectPanel.css');
 
-class Panel extends Component {
+class ConnectPanel extends Component {
   constructor(props) {
     super(props);
 
@@ -29,11 +29,11 @@ class Panel extends Component {
 
     if (this.state.collapsed) {
       body.slideUp();
-      icon.removeClass('glyphicon-minus').addClass('glyphicon-plus');
+      icon.removeClass('glyphicon-resize-small').addClass('glyphicon-resize-full');
     }
     else {
       body.slideDown();
-      icon.removeClass('glyphicon-plus').addClass('glyphicon-minus');
+      icon.removeClass('glyphicon-resize-full').addClass('glyphicon-resize-small');
     }
   }
 
@@ -52,7 +52,7 @@ class Panel extends Component {
               <ConnectButton onClick={(status) => this.props.onConnectionClick(status)} status={this.props.status}/>
             </h1>
           </div>
-          <span className="pull-right clickable" onClick={() => this.onClick()}><i ref="icon" className="glyphicon"></i></span>
+          <span className="pull-right btn-default clickable" onClick={() => this.onClick()}><i ref="icon" className="glyphicon"></i></span>
         </div>
         <div className="panel-body">
           {this.props.children}
@@ -62,4 +62,4 @@ class Panel extends Component {
   }
 }
 
-export default Panel;
+export default ConnectPanel;

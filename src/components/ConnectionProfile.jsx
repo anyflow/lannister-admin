@@ -3,7 +3,7 @@ import mqtt from 'mqtt';
 import React, {Component} from 'react';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import Panel from './Panel';
+import ConnectPanel from './ConnectPanel';
 import Checkbox from './Checkbox';
 import ConnectButton from './ConnectButton';
 import EditableLabel from './EditableLabel';
@@ -82,7 +82,7 @@ class ConnectionProfileComponent extends Component {
 
   render() {
     return (
-      <Panel title="Connection Profile"
+      <ConnectPanel title="Connection Profile"
         subtitle="values can be changed with double clicking"
         collapsed={this.props.collapsed}
         onConnectionClick={(status) => this.props.onConnectionClick(status) }
@@ -111,7 +111,7 @@ class ConnectionProfileComponent extends Component {
             </BootstrapTable>
           </div>
         </div>
-      </Panel>
+      </ConnectPanel>
     );
   }
 }
