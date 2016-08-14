@@ -70,12 +70,12 @@ class ConnectionProfileComponent extends Component {
       case 'connectionTimeout':
       case 'keepAliveInterval':
         return (
-          <EditableLabel id={row.key} text={cell} onBlur={(value) => this.props.setAdvancedProfile(row.key, value)} />
+          <EditableLabel id={row.key} text={cell} onBlur={(value) => this.props.setAdvancedProfile(row.key, value) } />
         );
 
       default:
         return (
-          <EditableLabel id={row.key} text={cell} onBlur={(value) => this.props.setBasicProfile(row.key, value)} />
+          <EditableLabel id={row.key} text={cell} onBlur={(value) => this.props.setBasicProfile(row.key, value) } />
         );
     }
   }
@@ -85,12 +85,13 @@ class ConnectionProfileComponent extends Component {
       <Panel title="Connection Profile"
         subtitle="values can be changed with double clicking"
         collapsed={this.props.collapsed}
-        onConnectionClick={(status) => this.props.onConnectionClick(status)} 
+        onConnectionClick={(status) => this.props.onConnectionClick(status) }
         status={this.props.status}>
         <div className="row">
           <div className="col-xs-6">
             <h4>Basic profile</h4>
-            <BootstrapTable data={this.basicProfile}
+            <BootstrapTable
+              data={this.basicProfile}
               condensed={true}
               hover={true}
               striped={true}>
@@ -100,7 +101,8 @@ class ConnectionProfileComponent extends Component {
           </div>
           <div className="col-xs-6">
             <h4>Advanced profile</h4>
-            <BootstrapTable data={this.advancedProfile}
+            <BootstrapTable
+              data={this.advancedProfile}
               condensed={true}
               hover={true}
               striped={true}>

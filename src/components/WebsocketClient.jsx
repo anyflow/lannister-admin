@@ -45,9 +45,10 @@ class WebsocketClientPage extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <ConnectionProfile collapsed={this.props.connectionStatus == 'connected'}
-                           onConnectionClick={this.onConnectionClick}
-                           status={this.props.connectionStatus}/>
+        <ConnectionProfile
+          collapsed={this.props.connectionStatus == 'connected'}
+          onConnectionClick={this.onConnectionClick}
+          status={this.props.connectionStatus}/>
       </div>
     );
   }

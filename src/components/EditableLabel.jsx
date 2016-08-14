@@ -28,16 +28,17 @@ class EditableLabel extends Component {
 
   render() {
     if (this.state.editing) {
-      return <input ref='textInput'
-                    type='text'
-                    onChange={() => this.setState({ text: this.refs.textInput.value })}
-                    onBlur={() => this.inputLostFocus()}
-                    onKeyPress={this.keyPressed}
-                    value={this.state.text}
-                    autoFocus />;
+      return <input
+        ref='textInput'
+        type='text'
+        onChange={() => this.setState({ text: this.refs.textInput.value }) }
+        onBlur={() => this.inputLostFocus() }
+        onKeyPress={this.keyPressed}
+        value={this.state.text}
+        autoFocus />;
     }
     else {
-      return <div onDoubleClick={() => this.setState({ editing: true })} >{this.state.text}</div>;
+      return <div onDoubleClick={() => this.setState({ editing: true }) } >{this.state.text}</div>;
     }
   }
 }

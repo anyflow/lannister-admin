@@ -24,7 +24,8 @@ class Dropdown extends Component {
     let key = this.props.scalaData ? this.state.selected : this.state.selected.key;
 
     return (
-      <DropdownButton bsSize="small"
+      <DropdownButton
+        bsSize="small"
         bsStyle="default"
         title={title}
         key={key}
