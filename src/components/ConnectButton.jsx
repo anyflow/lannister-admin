@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Button} from 'react-bootstrap';
 
+require('../styles/ConnectButton.css');
+
 var data = {
   disconnected: {
     status: 'disconnected',
@@ -37,12 +39,12 @@ class ConnectButton extends Component {
 
   render() {
     return (
-      <Button bsStyle={this.state.bsStyle}
+      <span 
         onClick={() => this.props.onClick(this.state.status)}
-        className="btn pull-right"
+        className={"btn-connect btn-" + this.state.bsStyle}
         disabled={this.state.disabled}>
         {this.state.text}
-      </Button>
+      </span>
     );
   }
 }

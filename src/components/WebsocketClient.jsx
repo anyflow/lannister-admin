@@ -2,6 +2,7 @@ import mqtt from 'mqtt';
 import React, {Component} from 'react';
 import ConnectionProfile from './ConnectionProfile';
 import ConnectButton from './ConnectButton';
+import Panel from './Panel';
 import { connect } from 'react-redux';
 import * as actionCreators from '../bases/actionCreators';
 
@@ -43,9 +44,10 @@ class WebsocketClientPage extends Component {
 
   render() {
     return (
-      <div>
-        <ConnectionProfile collapsed={this.props.connectionStatus == 'connected'}/>
-        <ConnectButton onClick={this.onConnectionClick} status={this.props.connectionStatus}/>
+      <div className="container-fluid">
+        <ConnectionProfile collapsed={this.props.connectionStatus == 'connected'}
+                           onConnectionClick={this.onConnectionClick}
+                           status={this.props.connectionStatus}/>
       </div>
     );
   }

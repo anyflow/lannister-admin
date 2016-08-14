@@ -8,7 +8,7 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container-fluid">
         <PageHeader>Dashboard Panel</PageHeader>
       </div>
     );

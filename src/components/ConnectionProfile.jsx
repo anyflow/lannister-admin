@@ -42,7 +42,6 @@ class ConnectionProfileComponent extends Component {
       ret = ret.set(i, item);
     }
 
-    console.log(ret.toJS());
     return ret.toJS();
   }
 
@@ -66,9 +65,17 @@ class ConnectionProfileComponent extends Component {
       case 'willQos':
         return <Dropdown id={row.key} data={[0, 1, 2]} scalaData selectedIndex={2} />;
 
+      case 'userName':
+      case 'password':
+      case 'connectionTimeout':
+      case 'keepAliveInterval':
+        return (
+          <EditableLabel id={row.key} text={cell} onBlur={(value) => this.props.setAdvancedProfile(row.key, value)} />
+        );
+
       default:
         return (
-          <EditableLabel id={row.key} text={cell} />
+          <EditableLabel id={row.key} text={cell} onBlur={(value) => this.props.setBasicProfile(row.key, value)} />
         );
     }
   }
@@ -77,7 +84,9 @@ class ConnectionProfileComponent extends Component {
     return (
       <Panel title="Connection Profile"
         subtitle="values can be changed with double clicking"
-        collapsed={this.props.collapsed}>
+        collapsed={this.props.collapsed}
+        onConnectionClick={(status) => this.props.onConnectionClick(status)} 
+        status={this.props.status}>
         <div className="row">
           <div className="col-xs-6">
             <h4>Basic profile</h4>

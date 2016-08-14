@@ -20,7 +20,7 @@ class HelloPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container-fluid">
         <h1 className={classNames('output')}>Hello { this.props.name }!</h1>        
         <FieldGroup
           type="text"

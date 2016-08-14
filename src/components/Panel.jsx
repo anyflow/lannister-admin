@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import classNames from 'classnames';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import ConnectButton from './ConnectButton';
 import $ from 'jquery';
 
 require('../styles/Panel.css');
@@ -45,9 +46,13 @@ class Panel extends Component {
       <div className="panel panel-default">
         <div className="panel-heading">
           <div className="panel-heading-wrapper">
-            <h1 className="panel-title">{this.props.title}<span className="subtitle">{this.props.subtitle}</span></h1>
+            <h1 className="panel-title">
+              {this.props.title}
+              <span className="subtitle">{this.props.subtitle}</span>
+              <ConnectButton onClick={(status) => this.props.onConnectionClick(status)} status={this.props.status}/>
+            </h1>
           </div>
-          <span className="pull-right clickable" onClick={() => this.onClick() }><i ref="icon" className="glyphicon"></i></span>
+          <span className="pull-right clickable" onClick={() => this.onClick()}><i ref="icon" className="glyphicon"></i></span>
         </div>
         <div className="panel-body">
           {this.props.children}

@@ -23,5 +23,12 @@ a.clickable:hover { text-decoration:none; }
 .panel-title span {
   font-size: 13px;
   font-weight: 200;
-  margin-left: 5px;
+  margin: 0px 5px;
+}
+
+.in-connect {
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 4px;   
+    margin: -5px;
 }
