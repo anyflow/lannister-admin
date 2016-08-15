@@ -23,9 +23,9 @@ function connectionStatus(state = initialState.WebsocketClient.connectionStatus,
   }
 }
 
-function basicProfile(state = initialState.WebsocketClient.connectionProfile.basicProfile, action) {
+function connectionProfile(state = initialState.WebsocketClient.connectionProfile, action) {
   switch(action.type) {
-    case actions.SET_BASIC_PROFILE:
+    case actions.SET_CONNECTION_PROFILE:
       let newState = {};
       newState[action.profile.parameter] = action.profile.value;
       return Immutable.Map(state).merge(newState).toJS();
@@ -34,23 +34,6 @@ function basicProfile(state = initialState.WebsocketClient.connectionProfile.bas
       return state;
   }
 }
-
-function advancedProfile(state = initialState.WebsocketClient.connectionProfile.advancedProfile, action) {
-  switch(action.type) {
-    case actions.SET_ADVANCED_PROFILE:
-      let newState = {};
-      newState[action.profile.parameter] = action.profile.value;
-      return Immutable.Map(state).merge(newState).toJS();
-
-    default:
-      return state;
-  }
-}
-
-const connectionProfile = Redux.combineReducers({
-  basicProfile,
-  advancedProfile
-});
 
 const WebsocketClient = Redux.combineReducers({
   connectionStatus,

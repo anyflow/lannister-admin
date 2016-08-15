@@ -49,7 +49,7 @@ class ConnectionProfileComponent extends Component {
     for (let i = 0; i < profileTemplate.length; ++i) {
       let item = ret.get(i);
 
-      item.value = this.props[profileName][profileTemplate[i].key];
+      item.value = this.props[profileTemplate[i].key];
       ret = ret.set(i, item);
     }
 
@@ -60,41 +60,43 @@ class ConnectionProfileComponent extends Component {
     switch (row.key) {
       case 'cleanSession':
         return (
-          <Checkbox checked={cell}
-            onChange={(state) => this.props.setBasicProfile(row.key, state.checked) } />
+          <Checkbox
+            checked={cell}
+            onChange={(state) => this.props.setConnectionProfile(row.key, state.checked) } />
         );
 
       case 'willRetain':
         return (
-          <Checkbox checked={cell}
-            onChange={(state) => this.props.setBasicProfile(row.key, state.checked) } />
+          <Checkbox
+            checked={cell}
+            onChange={(state) => this.props.setConnectionProfile(row.key, state.checked) } />
         );
 
       case 'mqttVersion':
-        return <RadioGroup 
-                  className="btn-default btn-sm"
-                  dataTemplate={this.mqttVersionDataTemplate}
-                  selected={cell}
-                  onSelect={(key) => this.props.setAdvancedProfile(row.key, key)} />;
+        return <RadioGroup
+          className="btn-default btn-sm"
+          dataTemplate={this.mqttVersionDataTemplate}
+          selected={cell}
+          onSelect={(key) => this.props.setConnectionProfile(row.key, key) } />;
 
       case 'willQos':
-        return <RadioGroup 
-                  className="btn-default btn-sm"
-                  dataTemplate={this.qosDataTemplate}
-                  selected={cell.toString()}
-                  onSelect={(key) => this.props.setBasicProfile(row.key, parseInt(key))} />;
+        return <RadioGroup
+          className="btn-default btn-sm"
+          dataTemplate={this.qosDataTemplate}
+          selected={cell.toString() }
+          onSelect={(key) => this.props.setConnectionProfile(row.key, parseInt(key)) } />;
 
-      case 'userName':
-      case 'password':
+      case 'willTopic':
+      case 'willMessage':
       case 'connectionTimeout':
       case 'keepAliveInterval':
         return (
-          <EditableLabel id={row.key} text={cell} onBlur={(value) => this.props.setAdvancedProfile(row.key, value) } />
+          <EditableLabel id={row.key} text={cell} onBlur={(value) => this.props.setConnectionProfile(row.key, value) } />
         );
 
       default:
         return (
-          <EditableLabel id={row.key} text={cell} onBlur={(value) => this.props.setBasicProfile(row.key, value) } />
+          <EditableLabel id={row.key} text={cell} onBlur={(value) => this.props.setConnectionProfile(row.key, value) } />
         );
     }
   }
@@ -108,24 +110,22 @@ class ConnectionProfileComponent extends Component {
         status={this.props.status}>
         <div className="row">
           <div className="col-xs-6">
-            <h4 className="text-muted">Basic profile</h4>
             <BootstrapTable
               data={this.basicProfile}
               condensed={true}
               hover={true}
               striped={true}>
-              <TableHeaderColumn dataField="text" isKey={true} dataSort={true} width="150">Parameter</TableHeaderColumn>
+              <TableHeaderColumn dataField="text" isKey={true} width="150">Parameter</TableHeaderColumn>
               <TableHeaderColumn dataField="value" dataFormat={this._valueFormatter}>Value</TableHeaderColumn>
             </BootstrapTable>
           </div>
           <div className="col-xs-6">
-            <h4 className="text-muted">Advanced profile</h4>
             <BootstrapTable
               data={this.advancedProfile}
               condensed={true}
               hover={true}
               striped={true}>
-              <TableHeaderColumn dataField="text" isKey={true} dataSort={true} width="150">Parameter</TableHeaderColumn>
+              <TableHeaderColumn dataField="text" isKey={true} width="150">Parameter</TableHeaderColumn>
               <TableHeaderColumn dataField="value" dataFormat={this._valueFormatter}>Value</TableHeaderColumn>
             </BootstrapTable>
           </div>

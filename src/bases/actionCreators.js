@@ -14,19 +14,9 @@ export function setConnectionStatus(status) {
   };
 }
 
-export function setBasicProfile(parameter, value) {
+export function setConnectionProfile(parameter, value) {
   return {
-    type: actions.SET_BASIC_PROFILE,
-    profile: {
-      parameter: parameter,
-      value: value
-    }
-  }
-};
-
-export function setAdvancedProfile(parameter, value) {
-  return {
-    type: actions.SET_ADVANCED_PROFILE,
+    type: actions.SET_CONNECTION_PROFILE,
     profile: {
       parameter: parameter,
       value: value

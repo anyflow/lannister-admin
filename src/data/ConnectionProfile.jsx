@@ -3,6 +3,11 @@ import initialState from './initialState';
 
 let basicProfileTemplate = [
   {
+    key: "mqttVersion",
+    text: "MQTT version",
+    value: ""
+  },
+  {
     key: "mqttBrokerAddress",
     text: "MQTT Broker Address",
     value: ""
@@ -13,10 +18,23 @@ let basicProfileTemplate = [
     value: ""
   },
   {
+    key: "userName",
+    text: "User Name",
+    value: ""
+  },
+  {
+    key: "password",
+    text: "Password",
+    value: ""
+  },
+  {
     key: "cleanSession",
     text: "Clean Session",
     value: false
   },
+];
+
+let advancedProfileTemplate = [
   {
     key: "willQos",
     text: "Will QoS",
@@ -36,25 +54,7 @@ let basicProfileTemplate = [
     key: "willMessage",
     text: "Will Message",
     value: ""
-  },
-];
-
-let advancedProfileTemplate = [
-  {
-    key: "userName",
-    text: "User Name",
-    value: ""
-  },
-  {
-    key: "password",
-    text: "Password",
-    value: ""
-  },
-  {
-    key: "mqttVersion",
-    text: "MQTT version",
-    value: ""
-  },
+  },  
   {
     key: "connectionTimeout",
     text: "Connection Timeout",

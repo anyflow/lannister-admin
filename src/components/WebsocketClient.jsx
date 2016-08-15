@@ -9,9 +9,7 @@ import * as actionCreators from '../bases/actionCreators';
 require('../styles/WebsocketClient.css');
 
 function mapStateToProps(state) {
-  return {
-    connectionStatus: state.WebsocketClient.connectionStatus
-  };
+  return state.WebsocketClient;
 }
 
 class WebsocketClientPage extends Component {
@@ -31,7 +29,7 @@ class WebsocketClientPage extends Component {
   onConnectionClick(status) {
     switch (status) {
       case 'disconnected':
-        this.client = mqtt.connect('ws://anyflow.iptime.org:2883/mqtt');
+        this.client = mqtt.connect(this.props.connectionProfile.mqttBrokerAddress);
 
         this.props.setConnectionStatus('connecting');
 
@@ -65,7 +63,7 @@ class WebsocketClientPage extends Component {
           <div className="col-md-4">
             <div className="row">
               <div className="col-xs-12">
-                <h4 className="text-muted">Subscribe</h4>
+                <h4>Subscribe</h4>
                 <div className="input-group pull-right">
                   <input type="text" className="form-control" placeholder="Input topic filter" />
                   <div className="input-group-btn">
@@ -83,7 +81,7 @@ class WebsocketClientPage extends Component {
 
             <div className="row">
               <div className="col-xs-12">
-                <h4 className="text-muted">Publish</h4>
+                <h4>Publish</h4>
                 <div className="input-group pull-right">
                   <input type="text" className="form-control" placeholder="Input topic name" />
                   <div className="input-group-btn">
@@ -105,7 +103,7 @@ class WebsocketClientPage extends Component {
           </div>
 
           <div className="col-md-8">
-            <h4 className="text-muted">Subscriptions</h4>
+            <h4>Subscriptions</h4>
             <Subscription />
             <Subscription />
             <Subscription />
