@@ -7,7 +7,7 @@ import ConnectPanel from './ConnectPanel';
 import Checkbox from './Checkbox';
 import ConnectButton from './ConnectButton';
 import EditableLabel from './EditableLabel';
-import Dropdown from './Dropdown';
+import RadioGroup from './RadioGroup';
 import { connect } from 'react-redux';
 import * as actionCreators from '../bases/actionCreators';
 import { basicProfileTemplate, advancedProfileTemplate } from '../data/ConnectionProfile';
@@ -22,6 +22,17 @@ function mapStateToProps(state) {
 class ConnectionProfileComponent extends Component {
   constructor(props) {
     super(props);
+
+    this.qosDataTemplate = {
+      '0': "QoS 0",
+      '1': "1",
+      '2': "2"
+    };
+
+    this.mqttVersionDataTemplate = {
+      '3.1.1': '3.1.1',
+      '3.1': '3.1'
+    };
 
     this._valueFormatter = this._valueFormatter.bind(this);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
@@ -60,10 +71,18 @@ class ConnectionProfileComponent extends Component {
         );
 
       case 'mqttVersion':
-        return <Dropdown id={row.key} data={["3.1.1", "3.1"]} scalaData selectedIndex={0} />;
+        return <RadioGroup 
+                  className="btn-default btn-sm"
+                  dataTemplate={this.mqttVersionDataTemplate}
+                  selected={cell}
+                  onSelect={(key) => this.props.setAdvancedProfile(row.key, key)} />;
 
       case 'willQos':
-        return <Dropdown id={row.key} data={[0, 1, 2]} scalaData selectedIndex={2} />;
+        return <RadioGroup 
+                  className="btn-default btn-sm"
+                  dataTemplate={this.qosDataTemplate}
+                  selected={cell.toString()}
+                  onSelect={(key) => this.props.setBasicProfile(row.key, parseInt(key))} />;
 
       case 'userName':
       case 'password':

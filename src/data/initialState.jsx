@@ -10,7 +10,7 @@ const initialState = {
         mqttBrokerAddress: 'ws://anyflow.iptime.org:2883/mqtt',
         clientId: 'randomClientID',
         cleanSession: true,
-        willQos: 0,
+        willQos: 2,
         willRetain: true,
         willTopic: 'will_topic_value',
         willMessage: 'will_message_value'
@@ -22,7 +22,7 @@ const initialState = {
         connectionTimeout: 300,
         keepAliveInterval: 60
       }
-    }
+    },
   }
 };
 

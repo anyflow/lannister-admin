@@ -24,7 +24,7 @@ class ConnectPanel extends Component {
   }
 
   changeCollapseState() {
-    let body = $('.panel-body');
+    let body = $('.connection-panel-body');
     let icon = $('i');
 
     if (this.state.collapsed) {
@@ -54,7 +54,7 @@ class ConnectPanel extends Component {
           </div>
           <span className="pull-right btn-default clickable" onClick={() => this.onClick()}><i ref="icon" className="glyphicon"></i></span>
         </div>
-        <div className="panel-body">
+        <div className="panel-body connection-panel-body">
           {this.props.children}
         </div>
       </div>
