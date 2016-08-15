@@ -108,7 +108,7 @@ class ConnectionProfileComponent extends Component {
         status={this.props.status}>
         <div className="row">
           <div className="col-xs-6">
-            <h4>Basic profile</h4>
+            <h4 className="text-muted">Basic profile</h4>
             <BootstrapTable
               data={this.basicProfile}
               condensed={true}
@@ -119,7 +119,7 @@ class ConnectionProfileComponent extends Component {
             </BootstrapTable>
           </div>
           <div className="col-xs-6">
-            <h4>Advanced profile</h4>
+            <h4 className="text-muted">Advanced profile</h4>
             <BootstrapTable
               data={this.advancedProfile}
               condensed={true}

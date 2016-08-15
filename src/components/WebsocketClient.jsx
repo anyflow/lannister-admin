@@ -2,6 +2,7 @@ import mqtt from 'mqtt';
 import React, {Component} from 'react';
 import ConnectionProfile from './ConnectionProfile';
 import RadioGroup from './RadioGroup';
+import Subscription from './Subscription';
 import { connect } from 'react-redux';
 import * as actionCreators from '../bases/actionCreators';
 
@@ -61,60 +62,53 @@ class WebsocketClientPage extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-6">
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <h1 className="panel-title">Subscribe / Publish</h1>
+          <div className="col-md-4">
+            <div className="row">
+              <div className="col-xs-12">
+                <h4 className="text-muted">Subscribe</h4>
+                <div className="input-group pull-right">
+                  <input type="text" className="form-control" placeholder="Input topic filter" />
+                  <div className="input-group-btn">
+                    <button className="btn btn-primary" type="button">Subscribe</button>
+                  </div>
+                </div>
+                <div className="pull-right">
+                  <RadioGroup
+                    className="btn-info btn-sm"
+                    selected="qos1"
+                    dataTemplate={this.qosDataTemplate}/>
+                </div>
               </div>
+            </div>
 
-              <div className="panel-body container-fluid">
-                <div className="row">
-                  <div className="col-xs-12">
-                    <h4>Subscribe</h4>
-                    <div className="input-group">
-                      <input type="text" className="form-control" placeholder="Input topic filter" />
-                      <div className="input-group-btn">
-                        <RadioGroup
-                          className="btn-info"
-                          selected="qos1"
-                          dataTemplate={this.qosDataTemplate}/>
-                        <button className="btn btn-primary" type="button">Subscribe</button>
-                      </div>
-                    </div>
+            <div className="row">
+              <div className="col-xs-12">
+                <h4 className="text-muted">Publish</h4>
+                <div className="input-group pull-right">
+                  <input type="text" className="form-control" placeholder="Input topic name" />
+                  <div className="input-group-btn">
+                    <button className="btn btn-primary" type="button">Publish</button>
                   </div>
                 </div>
-
-                <div className="row">
-                  <div className="col-xs-12">
-                    <h4>Publish</h4>
-                    <div className="input-group">
-                      <input type="text" className="form-control" placeholder="Input topic name" />
-                      <div className="input-group-btn">
-                        <button className="btn btn-warning" data-toggle="button" aria-pressed="false">Retain</button>
-                        <RadioGroup
-                          className="btn-info"
-                          selected="qos2"
-                          dataTemplate={this.qosDataTemplate}/>
-                        <button className="btn btn-primary" type="button">Publish</button>
-                      </div>
-                    </div>
-                    <textarea
-                      className="form-control" rows="7"
-                      placeholder="Input message" />
-                  </div>
+                <div className="btn-group pull-right">
+                  <button className="btn btn-warning btn-sm" data-toggle="button" aria-pressed="false">Retain</button>
+                  <RadioGroup
+                    className="btn-info btn-sm"
+                    selected="qos2"
+                    dataTemplate={this.qosDataTemplate}/>
                 </div>
+                <textarea
+                  className="form-control pull-right" rows="7"
+                  placeholder="Input message" />
               </div>
             </div>
           </div>
 
-          <div className="col-md-6">
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <h1 className="panel-title">Subscriptions</h1>
-              </div>
-              <div className="panel-body">
-              </div>
-            </div>
+          <div className="col-md-8">
+            <h4 className="text-muted">Subscriptions</h4>
+            <Subscription />
+            <Subscription />
+            <Subscription />
           </div>
         </div>
       </div>
