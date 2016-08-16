@@ -5,8 +5,8 @@ class RadioGroup extends Component {
   constructor(props) {
     super(props);
 
-    this.onClick = this.onClick.bind(this);
     this.state = { selected: this.props.selected };
+    this.onClick = this.onClick.bind(this);
   }
 
   onClick(target) {

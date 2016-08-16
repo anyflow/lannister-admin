@@ -1,10 +1,10 @@
 import mqtt from 'mqtt';
 import React, {Component} from 'react';
 import ConnectionProfile from './ConnectionProfile';
-import RadioGroup from './RadioGroup';
 import Subscription from './Subscription';
 import { connect } from 'react-redux';
 import * as actionCreators from '../bases/actionCreators';
+import SubscribePublish from './SubscribePublish';
 
 require('../styles/WebsocketClient.css');
 
@@ -18,12 +18,6 @@ class WebsocketClientPage extends Component {
 
     this.client = null;
     this.onConnectionClick = this.onConnectionClick.bind(this);
-
-    this.qosDataTemplate = {
-      qos0: "QoS 0",
-      qos1: "1",
-      qos2: "2"
-    };
   }
 
   onConnectionClick(status) {
@@ -51,7 +45,7 @@ class WebsocketClientPage extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <div className="row ">
+        <div className="row">
           <div className="col-xs-12">
             <ConnectionProfile
               collapsed={this.props.connectionStatus == 'connected'}
@@ -60,50 +54,19 @@ class WebsocketClientPage extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-4">
-            <div className="row">
-              <div className="col-xs-12">
-                <h4>Subscribe</h4>
-                <div className="input-group pull-right">
-                  <input type="text" className="form-control" placeholder="Input topic filter" />
-                  <div className="input-group-btn">
-                    <button className="btn btn-primary" type="button">Subscribe</button>
-                  </div>
-                </div>
-                <div className="pull-right">
-                  <RadioGroup
-                    className="btn-info btn-sm"
-                    selected="qos1"
-                    dataTemplate={this.qosDataTemplate}/>
-                </div>
-              </div>
-            </div>
-
-            <div className="row">
-              <div className="col-xs-12">
-                <h4>Publish</h4>
-                <div className="input-group pull-right">
-                  <input type="text" className="form-control" placeholder="Input topic name" />
-                  <div className="input-group-btn">
-                    <button className="btn btn-primary" type="button">Publish</button>
-                  </div>
-                </div>
-                <div className="btn-group pull-right">
-                  <button className="btn btn-warning btn-sm" data-toggle="button" aria-pressed="false">Retain</button>
-                  <RadioGroup
-                    className="btn-info btn-sm"
-                    selected="qos2"
-                    dataTemplate={this.qosDataTemplate}/>
-                </div>
-                <textarea
-                  className="form-control pull-right" rows="7"
-                  placeholder="Input message" />
-              </div>
-            </div>
+          <div className="col-md-3">
+            <SubscribePublish />
           </div>
 
-          <div className="col-md-8">
+          <div className="col-md-4">
             <h4>Subscriptions</h4>
+            <Subscription />
+            <Subscription />
+            <Subscription />
+          </div>
+
+          <div className="col-md-5">
+            <h4>Messages</h4>
             <Subscription />
             <Subscription />
             <Subscription />

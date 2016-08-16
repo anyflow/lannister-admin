@@ -103,7 +103,7 @@ class ConnectionProfileComponent extends Component {
 
   render() {
     return (
-      <ConnectPanel title="Connection Profile"
+      <ConnectPanel title="Connection"
         subtitle="values can be changed with double clicking"
         collapsed={this.props.collapsed}
         onConnectionClick={(status) => this.props.onConnectionClick(status) }
