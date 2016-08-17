@@ -6,9 +6,14 @@ class Subscribe extends Component {
     super(props);
 
     this.qosDataTemplate = {
-      qos0: "QoS 0",
-      qos1: "1",
-      qos2: "2"
+      '0': "QoS 0",
+      '1': "1",
+      '2': "2"
+    };
+
+    this.state = {
+      topicFilter: '',
+      qos: 0,
     };
   }
 
@@ -18,15 +23,21 @@ class Subscribe extends Component {
         <div className="col-xs-12">
           <h4>Subscribe</h4>
           <div className="input-group pull-right">
-            <input type="text" className="form-control" placeholder="topic filter" />
+            <input
+              type="text"
+              className="form-control"
+              onChange={(e) => this.setState({ topicFilter: e.target.value }) }
+              placeholder="topic filter" />
             <div className="input-group-btn">
-              <button className="btn btn-primary" type="button">Subscribe</button>
+              <button className="btn btn-primary" type="button"
+                onClick={() => this.props.onSubscribe(this.state) }>Subscribe</button>
             </div>
           </div>
           <div className="pull-right">
             <RadioGroup
               className="btn-info btn-sm"
-              selected="qos1"
+              selected="0"
+              onSelect={(value) => this.setState({ qos: value }) }
               dataTemplate={this.qosDataTemplate}/>
           </div>
         </div>

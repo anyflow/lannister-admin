@@ -24,7 +24,7 @@ class ConnectionProfileComponent extends Component {
     super(props);
 
     this.qosDataTemplate = {
-      '0': "QoS 0",
+      '0': "0",
       '1': "1",
       '2': "2"
     };

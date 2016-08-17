@@ -42,7 +42,9 @@ const WebsocketClient = Redux.combineReducers({
 
 const reducers = Redux.combineReducers({
   Hello,
-  WebsocketClient
+  WebsocketClient,
+  subscriptions: initialState.subscriptions,
+  messages: initialState.messages
 });
 
 export default reducers;

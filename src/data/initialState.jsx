@@ -32,7 +32,11 @@ const initialState = {
       },
     ],
     messages: [
-
+      {
+        topicFilter: 'home/fountain',
+        message: 'This is a sample message',
+        date: '2016-08-17T14:11:29.337Z'
+      }
     ],
   }
 };

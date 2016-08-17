@@ -19,13 +19,37 @@ class WebsocketClientPage extends Component {
     super(props);
 
     this.client = null;
-    this.onConnectionClick = this.onConnectionClick.bind(this);
+    this.onConnection = this.onConnection.bind(this);
+
+    this.protocols = {
+      '3.1.1': { id: 'MQTT', version: 4 },
+      '3.1': { id: 'MQIsdp', version: 3 }
+    }
   }
 
-  onConnectionClick(status) {
+  makeConnectOptions() {
+    return {
+      cmd: 'connect',
+      protocolId: this.protocols[this.props.connectionProfile.mqttVersion].id,
+      protocolVersion: this.protocols[this.props.connectionProfile.mqttVersion].version,
+      clean: this.props.connectionProfile.cleanSession,
+      clientId: this.props.connectionProfile.clientId,
+      keepalive: this.props.connectionProfile.keepAliveInterval,
+      username: this.props.connectionProfile.userName,
+      password: new Buffer(this.props.connectionProfile.password),
+      will: {
+        topic: this.props.connectionProfile.willTopic,
+        payload: new Buffer(this.props.connectionProfile.willMessage),
+        qos: this.props.connectionProfile.willQos,
+        retain: this.props.connectionProfile.willRetain
+      }
+    };
+  }
+
+  onConnection(status) {
     switch (status) {
       case 'disconnected':
-        this.client = mqtt.connect(this.props.connectionProfile.mqttBrokerAddress);
+        this.client = mqtt.connect(this.props.connectionProfile.mqttBrokerAddress, this.makeConnectOptions());
 
         this.props.setConnectionStatus('connecting');
 
@@ -51,18 +75,18 @@ class WebsocketClientPage extends Component {
           <div className="col-xs-12">
             <ConnectionProfile
               collapsed={this.props.connectionStatus == 'connected'}
-              onConnectionClick={this.onConnectionClick}
+              onConnectionClick={this.onConnection}
               status={this.props.connectionStatus}/>
           </div>
         </div>
         <div className="row">
           <div className="col-md-4">
-            <Subscribe />
+            <Subscribe onSubscribe={(param) => console.log(param)} />
             <Subscriptions />
           </div>
 
           <div className="col-md-3">
-            <Publish />
+            <Publish onPublish={(param) => console.log(param)} />
           </div>
 
           <div className="col-md-5">
