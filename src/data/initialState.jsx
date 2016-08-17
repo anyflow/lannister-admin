@@ -19,6 +19,21 @@ const initialState = {
       connectionTimeout: 300,
       keepAliveInterval: 60
     },
+    subscriptions: [
+      {
+        topicFilter: 'home/fountain',
+        count: 4,
+        color: ''
+      },
+      {
+        topicFilter: '$',
+        count: 10,
+        color: ''
+      },
+    ],
+    messages: [
+
+    ],
   }
 };
 

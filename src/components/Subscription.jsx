@@ -10,9 +10,11 @@ class Subscription extends Component {
 
   render() {
     return (
-      <div className="bs-callout bs-callout-default">
-        <h4>test subscription</h4>
-      </div>
+      <div className="bs-subscription bs-subscription-default">
+        <span className="badge">{this.props.count}</span>
+        {this.props.topicFilter}
+        <button className="btn btn-danger pull-right btn-xs" type="button">unsubscribe</button>
+      </div >
     );
   }
 }

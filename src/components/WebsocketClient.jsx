@@ -1,10 +1,12 @@
 import mqtt from 'mqtt';
 import React, {Component} from 'react';
 import ConnectionProfile from './ConnectionProfile';
-import Subscription from './Subscription';
+import Subscribe from './Subscribe';
+import Subscriptions from './Subscriptions';
+import Publish from './Publish';
+import Messages from './Messages';
 import { connect } from 'react-redux';
 import * as actionCreators from '../bases/actionCreators';
-import SubscribePublish from './SubscribePublish';
 
 require('../styles/WebsocketClient.css');
 
@@ -54,22 +56,17 @@ class WebsocketClientPage extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-3">
-            <SubscribePublish />
+          <div className="col-md-4">
+            <Subscribe />
+            <Subscriptions />
           </div>
 
-          <div className="col-md-4">
-            <h4>Subscriptions</h4>
-            <Subscription />
-            <Subscription />
-            <Subscription />
+          <div className="col-md-3">
+            <Publish />
           </div>
 
           <div className="col-md-5">
-            <h4>Messages</h4>
-            <Subscription />
-            <Subscription />
-            <Subscription />
+            <Messages />
           </div>
         </div>
       </div>

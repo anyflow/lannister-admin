@@ -1,59 +1,60 @@
 .badge {
     margin-right: 5px;
 }
-.bs-subscription {
+.bs-message {
     padding: 5px 5px;
     margin: 5px 0;
     border: 1px solid #eee;
     border-left-width: 5px;
     border-radius: 3px;
 }
-.bs-subscription h4 {
+.bs-message h4 {
+    font-size: 17px;
     margin-top: 0;
     margin-bottom: 5px;
 }
-.bs-subscription p:last-child {
+.bs-message p:last-child {
     margin-bottom: 0;
 }
-.bs-subscription code {
+.bs-message code {
     border-radius: 3px;
 }
-.bs-subscription+.bs-subscription {
+.bs-message+.bs-message {
     margin-top: -5px;
 }
-.bs-subscription-default {
+.bs-message-default {
     border-left-color: #777;
 }
-.bs-subscription-default h4 {
+.bs-message-default h4 {
     color: #777;
 }
-.bs-subscription-primary {
+.bs-message-primary {
     border-left-color: #428bca;
 }
-.bs-subscription-primary h4 {
+.bs-message-primary h4 {
     color: #428bca;
 }
-.bs-subscription-success {
+.bs-message-success {
     border-left-color: #5cb85c;
 }
-.bs-subscription-success h4 {
+.bs-message-success h4 {
     color: #5cb85c;
 }
-.bs-subscription-danger {
+.bs-message-danger {
     border-left-color: #d9534f;
 }
-.bs-subscription-danger h4 {
+.bs-message-danger h4 {
     color: #d9534f;
 }
-.bs-subscription-warning {
+.bs-message-warning {
     border-left-color: #f0ad4e;
 }
-.bs-subscription-warning h4 {
+.bs-message-warning h4 {
     color: #f0ad4e;
 }
-.bs-subscription-info {
+.bs-message-info {
     border-left-color: #5bc0de;
 }
-.bs-subscription-info h4 {
+.bs-message-info h4 {
     color: #5bc0de;
 }
