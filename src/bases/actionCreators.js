@@ -23,3 +23,17 @@ export function setConnectionProfile(parameter, value) {
     }
   }
 };
+
+export function addSubscription(subscription) {
+  return {
+    type: actions.ADD_SUBSCRIPTION,
+    subscription: subscription
+  };
+}
+
+export function addMessage(message) {
+  return {
+    type: actions.ADD_MESSAGE,
+    message: message
+  };
+}

@@ -20,6 +20,7 @@ class WebsocketClientPage extends Component {
 
     this.client = null;
     this.onConnection = this.onConnection.bind(this);
+    this.onSubscribe = this.onSubscribe.bind(this);
 
     this.protocols = {
       '3.1.1': { id: 'MQTT', version: 4 },
@@ -68,6 +69,10 @@ class WebsocketClientPage extends Component {
     }
   }
 
+  onSubscribe(param) {
+
+  }
+
   render() {
     return (
       <div className="container-fluid">
@@ -81,7 +86,7 @@ class WebsocketClientPage extends Component {
         </div>
         <div className="row">
           <div className="col-md-4">
-            <Subscribe onSubscribe={(param) => console.log(param)} />
+            <Subscribe onSubscribe={(param) => this.onSubscribe(param)} />
             <Subscriptions />
           </div>
 

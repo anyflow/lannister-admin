@@ -13,38 +13,38 @@ function Hello(state = initialState, action) {
   }
 }
 
-function connectionStatus(state = initialState.WebsocketClient.connectionStatus, action) {
-  switch(action.type) {
-    case actions.SET_CONNECTION_STATUS:
-      return action.status;
-
-    default:
-      return state; 
-  }
-}
-
-function connectionProfile(state = initialState.WebsocketClient.connectionProfile, action) {
-  switch(action.type) {
+function WebsocketClient(state = initialState.WebsocketClient, action) {
+  switch (action.type) {
     case actions.SET_CONNECTION_PROFILE:
       let newState = {};
       newState[action.profile.parameter] = action.profile.value;
-      return Immutable.Map(state).merge(newState).toJS();
+      return Object.assign({}, state, {
+        connectionProfile: Immutable.Map(state.connectionProfile).merge(newState).toJS()
+      });
+
+    case actions.SET_CONNECTION_STATUS:
+      return Object.assign({}, state, {
+        connectionStatus: action.status
+      });
+
+    case actions.ADD_SUBSCRIPTION:
+      return Object.assign({}, state, {
+        subscriptions: Immutable.List(state.subscriptions).merge(action.subscription).toJS()
+      });
+
+    case actions.ADD_MESSAGE:
+      return Object.assign({}, state, {
+        messages: Immutable.List(state.messages).merge(action.message).toJS()
+      });
 
     default:
       return state;
   }
 }
 
-const WebsocketClient = Redux.combineReducers({
-  connectionStatus,
-  connectionProfile
-});
-
 const reducers = Redux.combineReducers({
   Hello,
-  WebsocketClient,
-  subscriptions: initialState.subscriptions,
-  messages: initialState.messages
+  WebsocketClient
 });
 
 export default reducers;

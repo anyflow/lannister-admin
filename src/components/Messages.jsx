@@ -15,8 +15,6 @@ class MessagesComponent extends Component {
   render() {
     let items = [];
 
-    console.log(this.props.messages);
-
     for (let i = 0; i < this.props.messages.length; ++i) {
       let val = this.props.messages[i];
 
