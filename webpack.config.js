@@ -1,5 +1,5 @@
 var webpack = require('webpack');
-var precss       = require('precss');
+var precss = require('precss');
 var autoprefixer = require('autoprefixer');
 
 var port = 8080;
@@ -8,7 +8,7 @@ var plugins = [
   new webpack.HotModuleReplacementPlugin()
 ];
 
-if(process.env.WEBPACK_ENV === 'dist') {
+if (process.env.WEBPACK_ENV === 'dist') {
   plugins.push(new webpack.optimize.UglifyJsPlugin({ minimize: true }));
   plugins.push(new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }));
 }
@@ -19,7 +19,7 @@ module.exports = {
     'webpack-dev-server/client?http://localhost:' + port, //FOR HotModuleReplacement
     'webpack/hot/only-dev-server',                     //FOR HotModuleReplacement
     './src/index'
-  ], 
+  ],
   output: {
     path: __dirname + '/dist',
     filename: 'bundle.js',
@@ -35,10 +35,10 @@ module.exports = {
         loader: 'react-hot!babel',                     //FOR ES6(babel) and react(react-hot) reloading
         exclude: /node_modules/
       },
-      { 
+      {
         test: /(\.jsx|.js)$/,
         loader: 'eslint',
-        exclude: /node_modules/ 
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
@@ -47,7 +47,7 @@ module.exports = {
     ]
   },
   postcss: function () {
-        return [precss, autoprefixer];
+    return [precss, autoprefixer];
   },
   devServer: {
     contentBase: './dist',                             //SET content base of webpack-dev-server 

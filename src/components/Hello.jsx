@@ -21,14 +21,14 @@ class HelloPage extends React.Component {
   render() {
     return (
       <div className="container-fluid">
-        <h1 className={classNames('output')}>Hello { this.props.name }!</h1>        
+        <h1 className={classNames('output') }>Hello { this.props.name }!</h1>
         <FieldGroup
           type="text"
           label="Type your name"
           placeholder="name"
           help="The name typed will be shown below"
-          onChange={(event) => this.props.setName(event.target.value)}
-        />
+          onChange={(event) => this.props.setName(event.target.value) }
+          />
       </div>
     );
   }

@@ -12,7 +12,7 @@ class RadioGroup extends Component {
   onClick(target) {
     if (this.state.selected == target.id) { return; }
 
-    this.setState({selected: target.id});
+    this.setState({ selected: target.id });
 
     if (this.props.hasOwnProperty('onSelect')) {
       this.props.onSelect(target.id);

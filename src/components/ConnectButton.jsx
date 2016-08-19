@@ -11,13 +11,13 @@ var data = {
     bsStyle: 'success',
     disabled: false
   },
-  connecting:{
+  connecting: {
     status: 'connecting',
     text: 'Connecting...',
     bsStyle: 'warning',
     disabled: true
   },
-  connected:{
+  connected: {
     status: 'connected',
     text: 'Disconnect',
     bsStyle: 'danger',
@@ -39,8 +39,8 @@ class ConnectButton extends Component {
 
   render() {
     return (
-      <span 
-        onClick={() => this.props.onClick(this.state.status)}
+      <span
+        onClick={() => this.props.onClick(this.state.status) }
         className={"btn-connect btn-" + this.state.bsStyle}
         disabled={this.state.disabled}>
         {this.state.text}

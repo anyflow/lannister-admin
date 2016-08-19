@@ -19,7 +19,7 @@ class MessagesComponent extends Component {
       let val = this.props.messages[i];
 
       items.push(
-        <Message key={i} topicFilter={val.topicFilter} message={val.message} date={val.date} />
+        <Message key={i} topicName={val.topicName} message={val.message} date={val.date} />
       );
     }
 

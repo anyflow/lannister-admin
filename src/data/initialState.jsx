@@ -20,23 +20,19 @@ const initialState = {
       keepAliveInterval: 60
     },
     subscriptions: [
-      {
-        topicFilter: 'home/fountain',
-        count: 4,
-        color: ''
-      },
-      {
-        topicFilter: '$',
-        count: 10,
-        color: ''
-      },
+      // {
+      //   topicFilter: 'home/fountain',
+      //   count: 4,
+      //   qos: 0,
+      //   color: ''
+      // },
     ],
     messages: [
-      {
-        topicFilter: 'home/fountain',
-        message: 'This is a sample message',
-        date: '2016-08-17T14:11:29.337Z'
-      }
+      // {
+      //   topicName: 'home/fountain',
+      //   message: 'This is a sample message',
+      //   date: new Date()
+      // }
     ],
   }
 };

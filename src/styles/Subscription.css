@@ -1,6 +1,12 @@
 .badge {
     margin-right: 5px;
 }
+
+.label {
+    margin-right: 3px;
+    padding:6px;
+}
+
 .bs-subscription {
     padding: 5px 5px;
     margin: 5px 0;

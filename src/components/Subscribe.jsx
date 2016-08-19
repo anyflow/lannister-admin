@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import RadioGroup from './RadioGroup';
 
+function color() {
+  return 'red';
+}
+
 class Subscribe extends Component {
   constructor(props) {
     super(props);
@@ -14,6 +18,8 @@ class Subscribe extends Component {
     this.state = {
       topicFilter: '',
       qos: 0,
+      count: 0,
+      color: color()
     };
   }
 
@@ -37,7 +43,7 @@ class Subscribe extends Component {
             <RadioGroup
               className="btn-info btn-sm"
               selected="0"
-              onSelect={(value) => this.setState({ qos: value }) }
+              onSelect={(value) => this.setState({ qos: parseInt(value) }) }
               dataTemplate={this.qosDataTemplate}/>
           </div>
         </div>

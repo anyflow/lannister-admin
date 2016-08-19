@@ -54,7 +54,7 @@ let advancedProfileTemplate = [
     key: "willMessage",
     text: "Will Message",
     value: ""
-  },  
+  },
   {
     key: "connectionTimeout",
     text: "Connection Timeout",

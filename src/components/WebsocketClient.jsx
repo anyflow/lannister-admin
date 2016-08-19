@@ -21,6 +21,7 @@ class WebsocketClientPage extends Component {
     this.client = null;
     this.onConnection = this.onConnection.bind(this);
     this.onSubscribe = this.onSubscribe.bind(this);
+    this.onPublish = this.onPublish.bind(this);
 
     this.protocols = {
       '3.1.1': { id: 'MQTT', version: 4 },
@@ -57,6 +58,7 @@ class WebsocketClientPage extends Component {
         this.client.on('connect', () => {
           this.props.setConnectionStatus('connected');
         });
+        this.client.on('message', (topic, message) => this.props.addMessage(topic, message));
         return;
 
       case 'connected':
@@ -70,7 +72,20 @@ class WebsocketClientPage extends Component {
   }
 
   onSubscribe(param) {
+    this.client.subscribe(param.topicFilter, { qos: param.qos }, (err, granted) => {
+      if (err != null) {
+        console.log('error occured:', err.toString());
+        return;
+      }
 
+      this.props.addSubscription(granted[0].topic, granted[0].qos);
+    });
+  }
+
+  onPublish(param) {
+    this.client.publish(param.topicName, param.message, { qos: param.qos, retain: param.retain }, () => {
+      console.log('publish finished');
+    });
   }
 
   render() {
@@ -86,12 +101,12 @@ class WebsocketClientPage extends Component {
         </div>
         <div className="row">
           <div className="col-md-4">
-            <Subscribe onSubscribe={(param) => this.onSubscribe(param)} />
+            <Subscribe onSubscribe={(param) => this.onSubscribe(param) } />
             <Subscriptions />
           </div>
 
           <div className="col-md-3">
-            <Publish onPublish={(param) => console.log(param)} />
+            <Publish onPublish={(param) => this.onPublish(param) } />
           </div>
 
           <div className="col-md-5">

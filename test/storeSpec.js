@@ -13,14 +13,14 @@ describe('Store', () => {
     };
     const store = createStore(reducers, initialState);
     expect(store.getState()).to.be.deep.equal(initialState);
-    
+
     const newName = 'Park';
     let unsubscribe = store.subscribe(() =>
       expect(store.getState().actionDefault).to.be.deep.equal({
         name: newName
       })
     );
-  
+
     store.dispatch(setName(newName));
   });
 });

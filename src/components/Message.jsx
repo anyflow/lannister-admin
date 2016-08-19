@@ -11,9 +11,9 @@ class Message extends Component {
   render() {
     return (
       <div className="bs-message bs-message-default">
-        <h4>{this.props.topicFilter}</h4>
-        {this.props.message}
-        <span className="pull-right">{this.props.date}</span>
+        <h4>{this.props.topicName}</h4>
+        {this.props.message.toString() }
+        <span className="pull-right">{this.props.date.toString() }</span>
       </div>
     );
   }

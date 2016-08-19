@@ -14,6 +14,7 @@ class Subscription extends Component {
         <span className="badge">{this.props.count}</span>
         {this.props.topicFilter}
         <button className="btn btn-danger pull-right btn-xs" type="button">unsubscribe</button>
+        <span className="label label-info pull-right">QoS {this.props.qos}</span>
       </div >
     );
   }

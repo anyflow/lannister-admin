@@ -49,10 +49,10 @@ class ConnectPanel extends Component {
             <h1 className="panel-title">
               {this.props.title}
               <span className="subtitle">{this.props.subtitle}</span>
-              <ConnectButton onClick={(status) => this.props.onConnectionClick(status)} status={this.props.status}/>
+              <ConnectButton onClick={(status) => this.props.onConnectionClick(status) } status={this.props.status}/>
             </h1>
           </div>
-          <span className="pull-right btn-default clickable" onClick={() => this.onClick()}><i ref="icon" className="glyphicon"></i></span>
+          <span className="pull-right btn-default clickable" onClick={() => this.onClick() }><i ref="icon" className="glyphicon"></i></span>
         </div>
         <div className="panel-body connection-panel-body">
           {this.props.children}
