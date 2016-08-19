@@ -59,12 +59,15 @@ class WebsocketClientPage extends Component {
           this.props.setConnectionStatus('connected');
         });
         this.client.on('message', (topic, message) => this.props.addMessage(topic, message));
+        this.client.on('error', (err) => {
+          console.log(err);
+          this.client.end(false, () => this.props.setConnectionStatus('disconnected'));
+        });
+        this.client.on('close', () => this.props.setConnectionStatus('disconnected'));
         return;
 
       case 'connected':
-        this.client.end(false, () => {
-          this.props.setConnectionStatus('disconnected');
-        });
+        this.client.end(false, () => this.props.setConnectionStatus('disconnected'));
         return;
 
       default: return;
@@ -94,23 +97,24 @@ class WebsocketClientPage extends Component {
         <div className="row">
           <div className="col-xs-12">
             <ConnectionProfile
-              collapsed={this.props.connectionStatus == 'connected'}
               onConnectionClick={this.onConnection}
-              status={this.props.connectionStatus}/>
+              connectionStatus={this.props.connectionStatus}/>
           </div>
         </div>
         <div className="row">
           <div className="col-md-4">
-            <Subscribe onSubscribe={(param) => this.onSubscribe(param) } />
-            <Subscriptions />
+            <Subscribe
+              onSubscribe={(param) => this.onSubscribe(param) }
+              disabled={this.props.connectionStatus != 'connected'}/>
+            <Subscriptions disabled={this.props.connectionStatus != 'connected'} />
           </div>
-
           <div className="col-md-3">
-            <Publish onPublish={(param) => this.onPublish(param) } />
+            <Publish
+              onPublish={(param) => this.onPublish(param) }
+              disabled={this.props.connectionStatus != 'connected'} />
           </div>
-
           <div className="col-md-5">
-            <Messages />
+            <Messages disabled={this.props.connectionStatus != 'connected'}/>
           </div>
         </div>
       </div>

@@ -22,7 +22,8 @@ class Checkbox extends Component {
         <input
           type="checkbox"
           defaultChecked={this.state.checked}
-          onChange={this.onChange} />
+          onChange={this.onChange}
+          disabled={this.props.disabled} />
       </div>
     );
   }

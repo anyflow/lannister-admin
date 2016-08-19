@@ -10,7 +10,8 @@ class RadioGroup extends Component {
   }
 
   onClick(target) {
-    if (this.state.selected == target.id) { return; }
+    if (this.state.selected == target.id ||
+      this.props.disabled) { return; }
 
     this.setState({ selected: target.id });
 
@@ -23,11 +24,20 @@ class RadioGroup extends Component {
     let radioButtons = [];
 
     for (let key in this.props.dataTemplate) {
-      let className = classNames(this.props.className, 'btn', this.props.selected == key ? 'active' : '');
+      let className = classNames(
+        this.props.className,
+        'btn',
+        this.props.selected == key ? 'active' : '',
+        this.props.disabled ? 'disabled' : '');
 
       radioButtons.push(
-        <label key={key} id={key} className={className} onClick={(event) => this.onClick(event.target) }>
-          <input type="radio"/>{this.props.dataTemplate[key]}
+        <label
+          key={key}
+          id={key}
+          className={className}
+          onClick={(e) => this.onClick(e.target) }
+          disabled={this.props.disabled}>
+          <input type="radio" disabled={this.props.disabled}/>{this.props.dataTemplate[key]}
         </label>
       );
     }

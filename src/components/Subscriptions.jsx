@@ -22,7 +22,12 @@ class SubscriptionsComponent extends Component {
       let val = this.props.subscriptions[i];
 
       items.push(
-        <Subscription key={i} topicFilter={val.topicFilter} count={val.count} qos={val.qos} />
+        <Subscription
+          key={i}
+          topicFilter={val.topicFilter}
+          count={val.count}
+          qos={val.qos}
+          disabled={this.props.disabled} />
       );
     }
 

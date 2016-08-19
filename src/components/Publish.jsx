@@ -27,9 +27,18 @@ class Publish extends Component {
         <div className="col-xs-12">
           <h4>Publish</h4>
           <div className="input-group pull-right">
-            <input type="text" className="form-control" placeholder="topic name" onChange={(e) => this.setState({ topicName: e.target.value }) } />
+            <input
+              type="text"
+              className="form-control"
+              placeholder="topic name"
+              onChange={(e) => this.setState({ topicName: e.target.value }) }
+              disabled={this.props.disabled}/>
             <div className="input-group-btn">
-              <button className="btn btn-primary" type="button" onClick={() => this.props.onPublish(this.state) }>Publish</button>
+              <button
+                className="btn btn-primary"
+                type="button"
+                onClick={() => this.props.onPublish(this.state) }
+                disabled={this.props.disabled}>Publish</button>
             </div>
           </div>
           <div className="btn-group pull-right">
@@ -37,18 +46,21 @@ class Publish extends Component {
               className="btn btn-warning btn-sm"
               data-toggle="button"
               aria-pressed="false"
-              onClick={(e) => this.setState({ retain: e.target.getAttribute('aria-pressed') }) }>Retain</button>
+              onClick={(e) => this.setState({ retain: e.target.getAttribute('aria-pressed') }) }
+              disabled={this.props.disabled}>Retain</button>
             <RadioGroup
               className="btn-info btn-sm"
               selected="0"
               onSelect={(value) => this.setState({ qos: value }) }
-              dataTemplate={this.qosDataTemplate}/>
+              dataTemplate={this.qosDataTemplate}
+              disabled={this.props.disabled}/>
           </div>
           <textarea
             className="form-control pull-right"
             rows="7"
             onChange={(e) => this.setState({ message: e.target.value }) }
-            placeholder="message" />
+            placeholder="message"
+            disabled={this.props.disabled}/>
         </div>
       </div >
     );

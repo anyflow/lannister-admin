@@ -62,14 +62,16 @@ class ConnectionProfileComponent extends Component {
         return (
           <Checkbox
             checked={cell}
-            onChange={(state) => this.props.setConnectionProfile(row.key, state.checked) } />
+            onChange={(state) => this.props.setConnectionProfile(row.key, state.checked) }
+            disabled={this.props.connectionStatus == 'connected'}/>
         );
 
       case 'willRetain':
         return (
           <Checkbox
             checked={cell}
-            onChange={(state) => this.props.setConnectionProfile(row.key, state.checked) } />
+            onChange={(state) => this.props.setConnectionProfile(row.key, state.checked) }
+            disabled={this.props.connectionStatus == 'connected'}/>
         );
 
       case 'mqttVersion':
@@ -77,26 +79,36 @@ class ConnectionProfileComponent extends Component {
           className="btn-default btn-sm"
           dataTemplate={this.mqttVersionDataTemplate}
           selected={cell}
-          onSelect={(key) => this.props.setConnectionProfile(row.key, key) } />;
+          onSelect={(key) => this.props.setConnectionProfile(row.key, key) }
+          disabled={this.props.connectionStatus == 'connected'}/>;
 
       case 'willQos':
         return <RadioGroup
           className="btn-default btn-sm"
           dataTemplate={this.qosDataTemplate}
           selected={cell.toString() }
-          onSelect={(key) => this.props.setConnectionProfile(row.key, parseInt(key)) } />;
+          onSelect={(key) => this.props.setConnectionProfile(row.key, parseInt(key)) }
+          disabled={this.props.connectionStatus == 'connected'}/>;
 
       case 'willTopic':
       case 'willMessage':
       case 'connectionTimeout':
       case 'keepAliveInterval':
         return (
-          <EditableLabel id={row.key} text={cell} onBlur={(value) => this.props.setConnectionProfile(row.key, value) } />
+          <EditableLabel
+            id={row.key}
+            text={cell}
+            onBlur={(value) => this.props.setConnectionProfile(row.key, value) }
+            disabled={this.props.connectionStatus == 'connected'}/>
         );
 
       default:
         return (
-          <EditableLabel id={row.key} text={cell} onBlur={(value) => this.props.setConnectionProfile(row.key, value) } />
+          <EditableLabel
+            id={row.key}
+            text={cell}
+            onBlur={(value) => this.props.setConnectionProfile(row.key, value) }
+            disabled={this.props.connectionStatus == 'connected'}/>
         );
     }
   }
@@ -105,9 +117,9 @@ class ConnectionProfileComponent extends Component {
     return (
       <ConnectPanel title="Connection"
         subtitle="values can be changed with double clicking"
-        collapsed={this.props.collapsed}
+        collapsed={this.props.connectionStatus == 'connected'}
         onConnectionClick={(status) => this.props.onConnectionClick(status) }
-        status={this.props.status}>
+        status={this.props.connectionStatus}>
         <div className="row">
           <div className="col-xs-6">
             <BootstrapTable

@@ -10,9 +10,10 @@ class EditableLabel extends Component {
       text: props.text
     };
 
-    this.keyPressed = this.keyPressed.bind(this);
+    this.onKeyPress = this.onKeyPress.bind(this);
     this.inputLostFocus = this.inputLostFocus.bind(this);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    this.onDoubleClick = this.onDoubleClick.bind(this);
   }
 
   inputLostFocus() {
@@ -20,10 +21,16 @@ class EditableLabel extends Component {
     this.props.onBlur(this.state.text);
   }
 
-  keyPressed(event) {
+  onKeyPress(event) {
     if (event.key == 'Enter') {
       this.inputLostFocus();
     }
+  }
+
+  onDoubleClick() {
+    if (this.props.disabled) { return; }
+
+    this.setState({ editing: true });
   }
 
   render() {
@@ -33,12 +40,13 @@ class EditableLabel extends Component {
         type='text'
         onChange={() => this.setState({ text: this.refs.textInput.value }) }
         onBlur={() => this.inputLostFocus() }
-        onKeyPress={this.keyPressed}
+        onKeyPress={this.onKeyPress}
         value={this.state.text}
+        disabled={this.props.disabled}
         autoFocus />;
     }
     else {
-      return <div onDoubleClick={() => this.setState({ editing: true }) } >{this.state.text}</div>;
+      return <div onDoubleClick={() => this.onDoubleClick() } >{this.state.text}</div>;
     }
   }
 }

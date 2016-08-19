@@ -27,7 +27,7 @@ class HelloPage extends React.Component {
           label="Type your name"
           placeholder="name"
           help="The name typed will be shown below"
-          onChange={(event) => this.props.setName(event.target.value) }
+          onChange={(e) => this.props.setName(e.target.value) }
           />
       </div>
     );

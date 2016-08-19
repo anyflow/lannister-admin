@@ -33,10 +33,12 @@ class Subscribe extends Component {
               type="text"
               className="form-control"
               onChange={(e) => this.setState({ topicFilter: e.target.value }) }
-              placeholder="topic filter" />
+              placeholder="topic filter"
+              disabled={this.props.disabled} />
             <div className="input-group-btn">
               <button className="btn btn-primary" type="button"
-                onClick={() => this.props.onSubscribe(this.state) }>Subscribe</button>
+                onClick={() => this.props.onSubscribe(this.state) }
+                disabled={this.props.disabled}>Subscribe</button>
             </div>
           </div>
           <div className="pull-right">
@@ -44,7 +46,8 @@ class Subscribe extends Component {
               className="btn-info btn-sm"
               selected="0"
               onSelect={(value) => this.setState({ qos: parseInt(value) }) }
-              dataTemplate={this.qosDataTemplate}/>
+              dataTemplate={this.qosDataTemplate}
+              disabled={this.props.disabled}/>
           </div>
         </div>
       </div>
