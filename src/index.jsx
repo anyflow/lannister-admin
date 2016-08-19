@@ -12,8 +12,6 @@ import About from './components/About';
 import Navigation from './components/Navigation';
 import initialState from './data/initialState';
 
-require('./index.css');
-
 const store = redux.createStore(reducers, initialState, redux.compose(
   redux.applyMiddleware(logger),
   window.devToolsExtension ? window.devToolsExtension() : f => f

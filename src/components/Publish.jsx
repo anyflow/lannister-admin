@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import RadioGroup from './RadioGroup';
 
+require('../styles/Publish.css');
+
 class Publish extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +23,7 @@ class Publish extends Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="row publish-container">
         <div className="col-xs-12">
           <h4>Publish</h4>
           <div className="input-group pull-right">

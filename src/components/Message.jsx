@@ -13,7 +13,7 @@ class Message extends Component {
       <div className="bs-message bs-message-default">
         <h4>{this.props.topicName}</h4>
         {this.props.message.toString() }
-        <span className="pull-right">{this.props.date.toString() }</span>
+        <span className="pull-right">{this.props.date.toISOString() }</span>
       </div>
     );
   }

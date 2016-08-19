@@ -3,6 +3,8 @@ import Subscription from './Subscription';
 import { connect } from 'react-redux';
 import * as actionCreators from '../bases/actionCreators';
 
+require('../styles/Subscriptions.css');
+
 function mapStateToProps(state) {
   return { subscriptions: state.WebsocketClient.subscriptions };
 }
@@ -25,7 +27,7 @@ class SubscriptionsComponent extends Component {
     }
 
     return (
-      <div>
+      <div className="subscriptions-container">
         <h4>Subscriptions</h4>
         {items}
       </div>
