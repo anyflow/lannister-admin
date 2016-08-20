@@ -28,7 +28,8 @@ class SubscriptionsComponent extends Component {
             topicFilter={key}
             count={subscription.count}
             qos={subscription.qos}
-            disabled={this.props.disabled} />
+            disabled={this.props.disabled}
+            onUnsubscribe={(topicFilter) => this.props.onUnsubscribe(topicFilter)} />
         );
 
         ++index;

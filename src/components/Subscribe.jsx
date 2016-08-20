@@ -18,9 +18,16 @@ class Subscribe extends Component {
     this.state = {
       topicFilter: '',
       qos: 0,
-      count: 0,
       color: color()
     };
+
+    this.onSubscribeClick = this.onSubscribeClick.bind(this);
+  }
+
+  onSubscribeClick() {
+    this.props.onSubscribe(this.state);
+
+    this.setState({ topicFilter: '', qos: 0 });
   }
 
   render() {
@@ -34,10 +41,11 @@ class Subscribe extends Component {
               className="form-control"
               onChange={(e) => this.setState({ topicFilter: e.target.value }) }
               placeholder="topic filter"
-              disabled={this.props.disabled} />
+              disabled={this.props.disabled}
+              value={this.state.topicFilter} />
             <div className="input-group-btn">
               <button className="btn btn-primary" type="button"
-                onClick={() => this.props.onSubscribe(this.state) }
+                onClick={() => this.onSubscribeClick() }
                 disabled={this.props.disabled}>Subscribe</button>
             </div>
           </div>
@@ -45,7 +53,7 @@ class Subscribe extends Component {
             <RadioGroup
               className="btn-info btn-sm"
               name="subscribeQos"
-              selected="0"
+              selected={this.state.qos}
               onSelect={(value) => this.setState({ qos: parseInt(value) }) }
               dataTemplate={this.qosDataTemplate}
               disabled={this.props.disabled}/>

@@ -5,15 +5,12 @@ class RadioGroup extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { selected: this.props.selected };
     this.onClick = this.onClick.bind(this);
   }
 
   onClick(target) {
-    if (this.state.selected == target.id ||
+    if (this.props.selected == target.id ||
       this.props.disabled) { return; }
-
-    this.setState({ selected: target.id });
 
     if (this.props.hasOwnProperty('onSelect')) {
       this.props.onSelect(target.id);
@@ -27,7 +24,7 @@ class RadioGroup extends Component {
       let className = classNames(
         this.props.className,
         'btn',
-        this.state.selected == key ? 'active' : '');
+        this.props.selected == key ? 'active' : '');
         
       radioButtons.push(
         <label

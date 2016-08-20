@@ -14,7 +14,6 @@ class MessagesComponent extends Component {
 
   render() {
     let items = [], index = 0;
-    console.log(this.props.messages);
 
     for (let key in this.props.messages) {
       if (this.props.messages.hasOwnProperty(key)) {

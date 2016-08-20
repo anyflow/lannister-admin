@@ -20,14 +20,14 @@ const initialState = {
       keepAliveInterval: 60
     },
     subscriptions: {
-      // 'home/fountain':{
+      // 'home/fountain': {
       //   count: 4,
       //   qos: 0,
       //   color: ''
       // },
     },
     messages: {
-      // 'home/fountain'{
+      // 'home/fountain': {
       //   message: 'This is a sample message',
       //   date: new Date()
       // }

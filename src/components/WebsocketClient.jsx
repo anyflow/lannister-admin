@@ -22,6 +22,7 @@ class WebsocketClientPage extends Component {
     this.onConnection = this.onConnection.bind(this);
     this.onSubscribe = this.onSubscribe.bind(this);
     this.onPublish = this.onPublish.bind(this);
+    this.onUnsubscribe = this.onUnsubscribe.bind(this);
 
     this.protocols = {
       '3.1.1': { id: 'MQTT', version: 4 },
@@ -58,7 +59,10 @@ class WebsocketClientPage extends Component {
         this.client.on('connect', () => {
           this.props.setConnectionStatus('connected');
         });
-        this.client.on('message', (topic, message) => this.props.addMessage(topic, message));
+        this.client.on('message', (topic, message) => {
+          this.props.addMessage(topic, message);
+          this.props.updateMessageCount(topic, ++this.props.subscriptions[topic].count);
+        });
         this.client.on('error', (err) => {
           console.log(err);
           this.client.end(false, () => this.props.setConnectionStatus('disconnected'));
@@ -91,6 +95,12 @@ class WebsocketClientPage extends Component {
     });
   }
 
+  onUnsubscribe(topicFilter) {
+    this.client.unsubscribe(topicFilter, () => {
+      this.props.removeSubscription(topicFilter);
+    });
+  }
+
   render() {
     return (
       <div className="container-fluid">
@@ -106,7 +116,9 @@ class WebsocketClientPage extends Component {
             <Subscribe
               onSubscribe={(param) => this.onSubscribe(param) }
               disabled={this.props.connectionStatus != 'connected'}/>
-            <Subscriptions disabled={this.props.connectionStatus != 'connected'} />
+            <Subscriptions
+              disabled={this.props.connectionStatus != 'connected'}
+              onUnsubscribe={(topicFilter) => this.onUnsubscribe(topicFilter) } />
           </div>
           <div className="col-md-3">
             <Publish

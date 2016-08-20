@@ -16,6 +16,7 @@ class Subscription extends Component {
         <button
           className="btn btn-danger pull-right btn-xs"
           type="button"
+          onClick={() => this.props.onUnsubscribe(this.props.topicFilter)}
           disabled={this.props.disabled}>unsubscribe</button>
         <span
           className="label label-info pull-right"

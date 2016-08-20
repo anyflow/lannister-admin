@@ -43,7 +43,9 @@ class EditableLabel extends Component {
         onKeyPress={this.onKeyPress}
         value={this.state.text}
         disabled={this.props.disabled}
-        autoFocus />;
+        autoFocus
+        placeholder={this.props.placeholder}
+        className="form-control" />;
     }
     else {
       return <div onDoubleClick={() => this.onDoubleClick() } >{this.state.text}</div>;

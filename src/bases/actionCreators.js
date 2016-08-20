@@ -21,8 +21,8 @@ export function setConnectionProfile(parameter, value) {
       parameter,
       value
     }
-  }
-};
+  };
+}
 
 export function addSubscription(topicFilter, qos) {
   let item = {};
@@ -35,15 +35,23 @@ export function addSubscription(topicFilter, qos) {
   return {
     type: actions.ADD_SUBSCRIPTION,
     subscription: item
-  }
-};
+  };
+}
 
 export function removeSubscription(topicFilter) {
   return {
-    type: actions.ADD_SUBSCRIPTION,
+    type: actions.REMOVE_SUBSCRIPTION,
     topicFilter
-  }
-};
+  };
+}
+
+export function updateMessageCount(topicFilter, count) {
+  return {
+    type: actions.UPDATE_MESSAGE_COUNT,
+    topicFilter,
+    count
+  };
+}
 
 export function addMessage(topicName, message) {
   let item = {};

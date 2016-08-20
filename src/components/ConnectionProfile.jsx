@@ -56,13 +56,24 @@ class ConnectionProfileComponent extends Component {
     return ret.toJS();
   }
 
+  _editableLabel(parameter, value, onBlur, disabled, placeholder) {
+    return (
+      <EditableLabel
+        id={parameter}
+        text={value}
+        onBlur={(val) => onBlur(parameter, val) }
+        disabled={disabled}
+        placeholder={placeholder}/>
+    );
+  }
+
   _valueFormatter(cell, row) {
     switch (row.key) {
       case 'cleanSession':
         return (
           <Checkbox
             checked={cell}
-            onChange={(state) => this.props.setConnectionProfile(row.key, state.checked) }
+            onChange={(state) => this.props.setConnectionProfile('cleanSession', state.checked) }
             disabled={this.props.connectionStatus == 'connected'}/>
         );
 
@@ -70,7 +81,7 @@ class ConnectionProfileComponent extends Component {
         return (
           <Checkbox
             checked={cell}
-            onChange={(state) => this.props.setConnectionProfile(row.key, state.checked) }
+            onChange={(state) => this.props.setConnectionProfile('willRetain', state.checked) }
             disabled={this.props.connectionStatus == 'connected'}/>
         );
 
@@ -78,8 +89,8 @@ class ConnectionProfileComponent extends Component {
         return <RadioGroup
           className="btn-default btn-sm"
           dataTemplate={this.mqttVersionDataTemplate}
-          selected={cell}
-          onSelect={(key) => this.props.setConnectionProfile(row.key, key) }
+          selected={this.props.mqttVersion}
+          onSelect={(key) => this.props.setConnectionProfile('mqttVersion', key) }
           disabled={this.props.connectionStatus == 'connected'}
           name="mqttVersion"/>;
 
@@ -87,31 +98,69 @@ class ConnectionProfileComponent extends Component {
         return <RadioGroup
           className="btn-default btn-sm"
           dataTemplate={this.qosDataTemplate}
-          selected={cell.toString() }
-          onSelect={(key) => this.props.setConnectionProfile(row.key, parseInt(key)) }
+          selected={this.props.willQos.toString() }
+          onSelect={(key) => this.props.setConnectionProfile('willQos', parseInt(key)) }
           disabled={this.props.connectionStatus == 'connected'}
           name="willQos"/>;
 
+      case 'mqttBrokerAddress':
+        return this._editableLabel('mqttBrokerAddress',
+          this.props.mqttBrokerAddress,
+          this.props.setConnectionProfile,
+          this.props.connectionStatus == 'connected',
+          'ws(s)://hostname:port/(path)');
+
+      case 'clientId':
+        return this._editableLabel('clientId',
+          this.props.clientId,
+          this.props.setConnectionProfile,
+          this.props.connectionStatus == 'connected',
+          'client_id');
+
+      case 'userName':
+        return this._editableLabel('userName',
+          this.props.userName,
+          this.props.setConnectionProfile,
+          this.props.connectionStatus == 'connected',
+          'user_name');
+
+      case 'password':
+        return this._editableLabel('password',
+          this.props.password,
+          this.props.setConnectionProfile,
+          this.props.connectionStatus == 'connected',
+          'password');
+
       case 'willTopic':
+        return this._editableLabel('willTopic',
+          this.props.willTopic,
+          this.props.setConnectionProfile,
+          this.props.connectionStatus == 'connected',
+          'will_topic_name');
+
       case 'willMessage':
+        return this._editableLabel('willMessage',
+          this.props.willMessage,
+          this.props.setConnectionProfile,
+          this.props.connectionStatus == 'connected',
+          'will_topic_message');
+
       case 'connectionTimeout':
+        return this._editableLabel('connectionTimeout',
+          this.props.connectionTimeout,
+          this.props.setConnectionProfile,
+          this.props.connectionStatus == 'connected',
+          'connection timeout in second. e.g. 300');
+
       case 'keepAliveInterval':
-        return (
-          <EditableLabel
-            id={row.key}
-            text={cell}
-            onBlur={(value) => this.props.setConnectionProfile(row.key, value) }
-            disabled={this.props.connectionStatus == 'connected'}/>
-        );
+        return this._editableLabel('keepAliveInterval',
+          this.props.keepAliveInterval,
+          this.props.setConnectionProfile,
+          this.props.connectionStatus == 'connected',
+          'keep alive interval in second. e.g. 60');
 
       default:
-        return (
-          <EditableLabel
-            id={row.key}
-            text={cell}
-            onBlur={(value) => this.props.setConnectionProfile(row.key, value) }
-            disabled={this.props.connectionStatus == 'connected'}/>
-        );
+        console.log('invalid row key!');
     }
   }
 

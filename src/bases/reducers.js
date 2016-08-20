@@ -33,7 +33,14 @@ function WebsocketClient(state = initialState.WebsocketClient, action) {
       });
 
     case actions.REMOVE_SUBSCRIPTION:
-      return state;
+      return Object.assign({}, state, {
+        subscriptions: Immutable.Map(state.subscriptions).delete(action.topicFilter).toJS()
+      });
+
+    case actions.UPDATE_MESSAGE_COUNT:
+      return Object.assign({}, state, {
+        subscriptions: Immutable.fromJS(state.subscriptions).updateIn([action.topicFilter, 'count'], val => action.count).toJS()
+      });
 
     case actions.ADD_MESSAGE:
       return Object.assign({}, state, {
