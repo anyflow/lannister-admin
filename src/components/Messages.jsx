@@ -13,14 +13,18 @@ class MessagesComponent extends Component {
   }
 
   render() {
-    let items = [];
+    let items = [], index = 0;
+    console.log(this.props.messages);
 
-    for (let i = 0; i < this.props.messages.length; ++i) {
-      let val = this.props.messages[i];
+    for (let key in this.props.messages) {
+      if (this.props.messages.hasOwnProperty(key)) {
+        let message = this.props.messages[key];
 
-      items.push(
-        <Message key={i} topicName={val.topicName} message={val.message} date={val.date} />
-      );
+        items.push(
+          <Message key={index} topicName={key} message={message.message} date={message.date} />
+        );
+        ++index;
+      }
     }
 
     return (

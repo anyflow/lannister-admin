@@ -51,6 +51,7 @@ class Publish extends Component {
             <RadioGroup
               className="btn-info btn-sm"
               selected="0"
+              name="publishQos"
               onSelect={(value) => this.setState({ qos: value }) }
               dataTemplate={this.qosDataTemplate}
               disabled={this.props.disabled}/>

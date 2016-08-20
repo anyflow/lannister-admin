@@ -25,24 +25,35 @@ export function setConnectionProfile(parameter, value) {
 };
 
 export function addSubscription(topicFilter, qos) {
-  return {
-    type: actions.ADD_SUBSCRIPTION,
-    subscription: {
-      topicFilter,
+  let item = {};
+  item[topicFilter] = {
       qos,
       count: 0,
       color: 'red'
-    }
+  };
+
+  return {
+    type: actions.ADD_SUBSCRIPTION,
+    subscription: item
+  }
+};
+
+export function removeSubscription(topicFilter) {
+  return {
+    type: actions.ADD_SUBSCRIPTION,
+    topicFilter
   }
 };
 
 export function addMessage(topicName, message) {
-  return {
-    type: actions.ADD_MESSAGE,
-    message: {
-      topicName,
+  let item = {};
+  item[topicName] = {
       message,
       date: new Date()
-    }
+  };
+
+  return {
+    type: actions.ADD_MESSAGE,
+    message: item
   };
 }

@@ -16,19 +16,23 @@ class SubscriptionsComponent extends Component {
   }
 
   render() {
-    let items = [];
+    let index = 0, items = [];
 
-    for (let i = 0; i < this.props.subscriptions.length; ++i) {
-      let val = this.props.subscriptions[i];
+    for (let key in this.props.subscriptions) {
+      if (this.props.subscriptions.hasOwnProperty(key)) {
+        let subscription = this.props.subscriptions[key];
 
-      items.push(
-        <Subscription
-          key={i}
-          topicFilter={val.topicFilter}
-          count={val.count}
-          qos={val.qos}
-          disabled={this.props.disabled} />
-      );
+        items.push(
+          <Subscription
+            key={index}
+            topicFilter={key}
+            count={subscription.count}
+            qos={subscription.qos}
+            disabled={this.props.disabled} />
+        );
+
+        ++index;
+      }
     }
 
     return (

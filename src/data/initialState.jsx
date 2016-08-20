@@ -19,21 +19,19 @@ const initialState = {
       connectionTimeout: 300,
       keepAliveInterval: 60
     },
-    subscriptions: [
-      // {
-      //   topicFilter: 'home/fountain',
+    subscriptions: {
+      // 'home/fountain':{
       //   count: 4,
       //   qos: 0,
       //   color: ''
       // },
-    ],
-    messages: [
-      // {
-      //   topicName: 'home/fountain',
+    },
+    messages: {
+      // 'home/fountain'{
       //   message: 'This is a sample message',
       //   date: new Date()
       // }
-    ],
+    },
   }
 };
 

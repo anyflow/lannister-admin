@@ -29,12 +29,15 @@ function WebsocketClient(state = initialState.WebsocketClient, action) {
 
     case actions.ADD_SUBSCRIPTION:
       return Object.assign({}, state, {
-        subscriptions: Immutable.List(state.subscriptions).push(action.subscription).toJS()
+        subscriptions: Immutable.Map(state.subscriptions).merge(action.subscription).toJS()
       });
+
+    case actions.REMOVE_SUBSCRIPTION:
+      return state;
 
     case actions.ADD_MESSAGE:
       return Object.assign({}, state, {
-        messages: Immutable.List(state.messages).push(action.message).toJS()
+        messages: Immutable.Map(state.messages).merge(action.message).toJS()
       });
 
     default:

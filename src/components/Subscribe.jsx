@@ -44,6 +44,7 @@ class Subscribe extends Component {
           <div className="pull-right">
             <RadioGroup
               className="btn-info btn-sm"
+              name="subscribeQos"
               selected="0"
               onSelect={(value) => this.setState({ qos: parseInt(value) }) }
               dataTemplate={this.qosDataTemplate}

@@ -27,9 +27,8 @@ class RadioGroup extends Component {
       let className = classNames(
         this.props.className,
         'btn',
-        this.props.selected == key ? 'active' : '',
-        this.props.disabled ? 'disabled' : '');
-
+        this.state.selected == key ? 'active' : '');
+        
       radioButtons.push(
         <label
           key={key}
@@ -37,7 +36,12 @@ class RadioGroup extends Component {
           className={className}
           onClick={(e) => this.onClick(e.target) }
           disabled={this.props.disabled}>
-          <input type="radio" disabled={this.props.disabled}/>{this.props.dataTemplate[key]}
+          <input
+            type="radio"
+            name={this.props.name}
+            autoComplete="off"
+            disabled={this.props.disabled}/>
+          {this.props.dataTemplate[key]}
         </label>
       );
     }

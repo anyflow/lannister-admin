@@ -80,7 +80,8 @@ class ConnectionProfileComponent extends Component {
           dataTemplate={this.mqttVersionDataTemplate}
           selected={cell}
           onSelect={(key) => this.props.setConnectionProfile(row.key, key) }
-          disabled={this.props.connectionStatus == 'connected'}/>;
+          disabled={this.props.connectionStatus == 'connected'}
+          name="mqttVersion"/>;
 
       case 'willQos':
         return <RadioGroup
@@ -88,7 +89,8 @@ class ConnectionProfileComponent extends Component {
           dataTemplate={this.qosDataTemplate}
           selected={cell.toString() }
           onSelect={(key) => this.props.setConnectionProfile(row.key, parseInt(key)) }
-          disabled={this.props.connectionStatus == 'connected'}/>;
+          disabled={this.props.connectionStatus == 'connected'}
+          name="willQos"/>;
 
       case 'willTopic':
       case 'willMessage':
