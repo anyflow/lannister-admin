@@ -15,7 +15,7 @@ class Navbar extends Component {
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <a className="navbar-brand" href="index.html">Lannister Dashboard</a>
+          <a className="navbar-brand" href="/dashboard">Lannister Dashboard</a>
         </div>
 
         <Topbar />

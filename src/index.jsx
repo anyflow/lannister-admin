@@ -19,6 +19,7 @@ window.$ = $;
 window.jQuery = $;
 window.jquery = $;
 
+require('font-awesome/css/font-awesome.css');
 require('bootstrap');
 require('./styles/index.css');
 

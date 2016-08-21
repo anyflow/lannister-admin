@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import classNames from 'classnames';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import ConnectButton from './ConnectButton';
-import $ from 'jquery';
 
 require('../styles/ConnectPanel.css');
 
