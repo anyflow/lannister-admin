@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import classNames from 'classnames';
 import RadioGroup from './RadioGroup';
 
-require('../styles/Publish.css');
-
 class Publish extends Component {
   constructor(props) {
     super(props);
@@ -47,7 +45,7 @@ class Publish extends Component {
           </div>
           <div className="btn-group pull-right">
             <button
-              className={classNames('btn','btn-warning', 'btn-sm', this.state.retain ? 'active': '')}
+              className={classNames('btn', 'btn-warning', 'btn-sm', this.state.retain ? 'active' : '') }
               data-toggle="button"
               aria-pressed={this.state.retain}
               onClick={(e) => this.setState({ retain: e.target.getAttribute('aria-pressed') }) }
@@ -61,14 +59,14 @@ class Publish extends Component {
               disabled={this.props.disabled}/>
           </div>
           <textarea
-            className="form-control pull-right"
-            rows="7"
+            className="form-control pull-right publish-textarea"
+            rows="4"
             onChange={(e) => this.setState({ message: e.target.value }) }
             placeholder="message"
             value={this.state.message}
             disabled={this.props.disabled}/>
         </div>
-      </div >
+      </div>
     );
   }
 }

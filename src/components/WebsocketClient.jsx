@@ -112,7 +112,10 @@ class WebsocketClientPage extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-4">
+          <div className="col-md-6">
+            <Publish
+              onPublish={(param) => this.onPublish(param) }
+              disabled={this.props.connectionStatus != 'connected'} />
             <Subscribe
               onSubscribe={(param) => this.onSubscribe(param) }
               disabled={this.props.connectionStatus != 'connected'}/>
@@ -120,12 +123,7 @@ class WebsocketClientPage extends Component {
               disabled={this.props.connectionStatus != 'connected'}
               onUnsubscribe={(topicFilter) => this.onUnsubscribe(topicFilter) } />
           </div>
-          <div className="col-md-3">
-            <Publish
-              onPublish={(param) => this.onPublish(param) }
-              disabled={this.props.connectionStatus != 'connected'} />
-          </div>
-          <div className="col-md-5">
+          <div className="col-md-6">
             <Messages disabled={this.props.connectionStatus != 'connected'}/>
           </div>
         </div>

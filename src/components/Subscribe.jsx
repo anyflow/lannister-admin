@@ -32,7 +32,7 @@ class Subscribe extends Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="row subscribe-container">
         <div className="col-xs-12">
           <h4>Subscribe</h4>
           <div className="input-group pull-right">

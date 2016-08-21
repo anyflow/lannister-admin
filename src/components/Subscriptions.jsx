@@ -3,8 +3,6 @@ import Subscription from './Subscription';
 import { connect } from 'react-redux';
 import * as actionCreators from '../bases/actionCreators';
 
-require('../styles/Subscriptions.css');
-
 function mapStateToProps(state) {
   return { subscriptions: state.WebsocketClient.subscriptions };
 }
@@ -29,7 +27,7 @@ class SubscriptionsComponent extends Component {
             count={subscription.count}
             qos={subscription.qos}
             disabled={this.props.disabled}
-            onUnsubscribe={(topicFilter) => this.props.onUnsubscribe(topicFilter)} />
+            onUnsubscribe={(topicFilter) => this.props.onUnsubscribe(topicFilter) } />
         );
 
         ++index;
@@ -37,9 +35,11 @@ class SubscriptionsComponent extends Component {
     }
 
     return (
-      <div className="subscriptions-container">
-        <h4>Subscriptions</h4>
-        {items}
+      <div className="row subscriptions-container">
+        <div className="col-xs-12">
+          <h4>Subscriptions</h4>
+          {items}
+        </div>
       </div>
     );
   }

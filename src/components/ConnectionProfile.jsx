@@ -176,8 +176,7 @@ class ConnectionProfileComponent extends Component {
             <BootstrapTable
               data={this.basicProfile}
               condensed={true}
-              hover={true}
-              striped={true}>
+              hover={true}>
               <TableHeaderColumn dataField="text" isKey={true} width="150">Parameter</TableHeaderColumn>
               <TableHeaderColumn dataField="value" dataFormat={this._valueFormatter}>Value</TableHeaderColumn>
             </BootstrapTable>
@@ -186,8 +185,7 @@ class ConnectionProfileComponent extends Component {
             <BootstrapTable
               data={this.advancedProfile}
               condensed={true}
-              hover={true}
-              striped={true}>
+              hover={true}>
               <TableHeaderColumn dataField="text" isKey={true} width="150">Parameter</TableHeaderColumn>
               <TableHeaderColumn dataField="value" dataFormat={this._valueFormatter}>Value</TableHeaderColumn>
             </BootstrapTable>

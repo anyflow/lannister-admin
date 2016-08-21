@@ -10,7 +10,17 @@ import Dashboard from './components/Dashboard';
 import WebsocketClient from './components/WebsocketClient';
 import About from './components/About';
 import Navigation from './components/Navigation';
+import Navbar from './components/Navbar';
 import initialState from './data/initialState';
+
+import $ from 'jquery';
+
+window.$ = $;
+window.jQuery = $;
+window.jquery = $;
+
+require('bootstrap');
+require('./styles/index.css');
 
 const store = redux.createStore(reducers, initialState, redux.compose(
   redux.applyMiddleware(logger),
@@ -20,10 +30,18 @@ const store = redux.createStore(reducers, initialState, redux.compose(
 class App extends Component {
   render() {
     return (
-      <div>
-        <Navigation />
-        {this.props.children}
+      <div id="wrapper">
+        <Navbar />
+        <div id="page-wrapper">
+          <div className="container-fluid">
+            {this.props.children}
+          </div>
+        </div>
       </div>
+      // <div>
+      //   <Navigation />
+      //   {this.props.children}
+      // </div>
     );
   }
 }

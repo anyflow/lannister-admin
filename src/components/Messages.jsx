@@ -27,9 +27,11 @@ class MessagesComponent extends Component {
     }
 
     return (
-      <div>
-        <h4>Messages</h4>
-        {items}
+      <div className="row messages-container">
+        <div className="col-xs-12">
+          <h4>Messages</h4>
+          {items}
+        </div>
       </div>
     );
   }

@@ -1,7 +1,32 @@
-textarea {
+.input-group {
+  margin-bottom: 10px;  
+}
+
+.publish-container {
+  border: 0px solid #ddd;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  padding-bottom: 10px;
+}
+
+.publish-textarea {
   margin-top: 10px;
 }
 
-.input-group {
-  margin-bottom: 10px;  
+.subscribe-container {
+  border: 0px solid #ddd;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  padding-bottom: 10px;
+}
+
+.subscriptions-container {
+  border: 0px solid #ddd;
+  padding-bottom: 10px;
+  border-right-width: 1px;
+}
+
+.messages-container {
+  border: 0px solid #ddd;
+  padding-bottom: 10px;
 }
