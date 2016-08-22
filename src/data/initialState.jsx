@@ -26,12 +26,12 @@ const initialState = {
       //   color: ''
       // },
     },
-    messages: {
+    messages: [
       // 'home/fountain': {
       //   message: 'This is a sample message',
       //   date: new Date()
       // }
-    },
+    ],
   }
 };
 

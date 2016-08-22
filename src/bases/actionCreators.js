@@ -27,9 +27,9 @@ export function setConnectionProfile(parameter, value) {
 export function addSubscription(topicFilter, qos) {
   let item = {};
   item[topicFilter] = {
-      qos,
-      count: 0,
-      color: 'red'
+    qos,
+    count: 0,
+    color: 'red'
   };
 
   return {
@@ -54,14 +54,18 @@ export function updateMessageCount(topicFilter, count) {
 }
 
 export function addMessage(topicName, message) {
-  let item = {};
-  item[topicName] = {
-      message,
-      date: new Date()
-  };
-
   return {
     type: actions.ADD_MESSAGE,
-    message: item
+    message: {
+      topicName,
+      message,
+      date: new Date()
+    }
+  };
+}
+
+export function removeAllMessages() {
+  return {
+    type: actions.REMOVE_ALL_MESSAGES
   };
 }

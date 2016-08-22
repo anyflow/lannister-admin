@@ -44,7 +44,12 @@ function WebsocketClient(state = initialState.WebsocketClient, action) {
 
     case actions.ADD_MESSAGE:
       return Object.assign({}, state, {
-        messages: Immutable.Map(state.messages).merge(action.message).toJS()
+        messages: Immutable.List(state.messages).push(action.message).toJS()
+      });
+
+    case actions.REMOVE_ALL_MESSAGES:
+      return Object.assign({}, state, {
+        messages: []
       });
 
     default:

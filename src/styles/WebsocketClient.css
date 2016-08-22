@@ -30,3 +30,25 @@
   border: 0px solid #ddd;
   padding-bottom: 10px;
 }
+
+.messages-pre {
+  margin-bottom: 10px;
+  min-height: 100px;
+}
+
+.messages-topic {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.messages-message {
+  cursor: pointer;
+}
+
+.messages-list {
+  margin-top: 5px;
+}
+
+.messages-clearAll {
+  vertical-align: middle;
+}
