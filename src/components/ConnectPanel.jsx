@@ -24,15 +24,14 @@ class ConnectPanel extends Component {
 
   changeCollapseState() {
     let body = $('.connection-panel-body');
-    let icon = $('i');
 
     if (this.state.collapsed) {
       body.slideUp();
-      icon.removeClass('glyphicon-resize-small').addClass('glyphicon-resize-full');
+      this.refs.icon.setAttribute('class', classNames('glyphicon', 'glyphicon-resize-full'));
     }
     else {
       body.slideDown();
-      icon.removeClass('glyphicon-resize-full').addClass('glyphicon-resize-small');
+      this.refs.icon.setAttribute('class', classNames('glyphicon', 'glyphicon-resize-small'));
     }
   }
 
@@ -51,7 +50,9 @@ class ConnectPanel extends Component {
               <ConnectButton onClick={(status) => this.props.onConnectionClick(status) } status={this.props.status}/>
             </h1>
           </div>
-          <span className="pull-right btn-default clickable" onClick={() => this.onClick() }><i ref="icon" className="glyphicon"></i></span>
+          <span className="pull-right btn-default clickable" onClick={() => this.onClick() }>
+            <i ref="icon" className="glyphicon" />
+          </span>
         </div>
         <div className="panel-body connection-panel-body">
           {this.props.children}
