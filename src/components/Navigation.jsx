@@ -1,41 +1,42 @@
 import React, {Component} from 'react';
+import classNames from 'classnames';
 import {Link} from 'react-router';
-import {Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
-import {LinkContainer} from 'react-router-bootstrap';
 
 class Navigation extends Component {
-  constructor(props) {
-    super(props);
+  classNames(path) {
+    return classNames(window.location.pathname == path ? 'active' : '');
   }
 
   render() {
     return (
-      <Navbar staticTop>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <Link to="/">Lannister-Dashboard</Link>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav>
-            <LinkContainer to="/dashboard">
-              <NavItem eventKey={1}>Dashboard</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/websocket_client">
-              <NavItem eventKey={2}>WebSocket Client</NavItem>
-            </LinkContainer>
-          </Nav>
-          <Nav pullRight>
-            <LinkContainer to="/about">
-              <NavItem eventKey={1}>About</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/hello">
-              <NavItem eventKey={2}>Hello</NavItem>
-            </LinkContainer>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+      <nav className="navbar navbar-default navbar-static-top">
+        <div className="container-fluid">
+          <div className="navbar-header">
+            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-target" aria-expanded="false">
+              <span className="sr-only">Toggle navigation</span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+            </button>
+            <Link to="/" className="navbar-brand">Lannister-Dashboard</Link>
+          </div>
+          <div className="collapse navbar-collapse" id="navbar-collapse-target">
+            <ul className="nav navbar-nav">
+              <li className={this.classNames('/dashboard')}>
+                <Link to="/dashboard"><i className="fa fa-dashboard fa-fw" /> Dashboard</Link>
+              </li>
+              <li className={this.classNames('/websocket_client')}>
+                <Link to="/websocket_client"><i className="fa fa-desktop fa-fw"/> WebSocket Client</Link>
+              </li>
+            </ul>
+            <ul className="nav navbar-nav navbar-right">
+              <li className={this.classNames('/about')}>
+                <Link to="/about"><i className="fa fa-info fa-fw"/> About</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     );
   }
 }

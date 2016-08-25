@@ -13,9 +13,6 @@ class Sidebar extends Component {
               <a href="/websocket_client"><i className="fa fa-desktop fa-fw"></i> WebSocket Client</a>
             </li>
             <li>
-              <a href="/hello">Hello</a>
-            </li>
-            <li>
               <a href="/about">About</a>
             </li>                                    
           </ul>

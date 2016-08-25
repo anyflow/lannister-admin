@@ -34,6 +34,7 @@
 .messages-pre {
   margin-bottom: 10px;
   min-height: 100px;
+  max-height: 100px;  
 }
 
 .messages-topic {

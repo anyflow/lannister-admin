@@ -5,7 +5,6 @@ import * as redux from 'redux';
 import { Router, Route, IndexRedirect, browserHistory } from 'react-router';
 import reducers from './bases/reducers';
 import { logger } from './bases/middlewares';
-import Hello from './components/Hello';
 import Dashboard from './components/Dashboard';
 import WebsocketClient from './components/WebsocketClient';
 import About from './components/About';
@@ -31,18 +30,18 @@ const store = redux.createStore(reducers, initialState, redux.compose(
 class App extends Component {
   render() {
     return (
-      <div id="wrapper">
-        <Navbar />
-        <div id="page-wrapper">
-          <div className="container-fluid">
-            {this.props.children}
-          </div>
-        </div>
-      </div>
-      // <div>
-      //   <Navigation />
-      //   {this.props.children}
+      // <div id="wrapper">
+      //   <Navbar />
+      //   <div id="page-wrapper">
+      //     <div className="container-fluid">
+      //       {this.props.children}
+      //     </div>
+      //   </div>
       // </div>
+      <div>
+        <Navigation />
+        {this.props.children}
+      </div>
     );
   }
 }
@@ -51,10 +50,9 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
-        <IndexRedirect to="/hello" />
+        <IndexRedirect to="/websocket_client" />
         <Route path="dashboard" component={Dashboard} />
         <Route path="websocket_client" component={WebsocketClient} />
-        <Route path="hello" component={Hello} />
         <Route path="about" component={About} />
       </Route>
     </Router>
