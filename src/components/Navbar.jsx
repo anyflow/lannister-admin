@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import Topbar from './Topbar';
 import Sidebar from './Sidebar';
+import {Link} from 'react-router';
 
 require('../third-parties/sb-admin-2.css');
+require('../styles/Navbar.css');
 
 class Navbar extends Component {
   render() {
@@ -15,7 +17,7 @@ class Navbar extends Component {
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <a className="navbar-brand" href="/dashboard">Lannister Dashboard</a>
+          <Link to="/websocket_client" className="navbar-brand">Lannister Dashboard</Link>
         </div>
 
         <Topbar />

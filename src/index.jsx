@@ -9,7 +9,7 @@ import Dashboard from './components/Dashboard';
 import WebsocketClient from './components/WebsocketClient';
 import About from './components/About';
 import Navigation from './components/Navigation';
-import Navbar from './components/Navbar';
+// import Navbar from './components/Navbar';
 import initialState from './data/initialState';
 
 import $ from 'jquery';
@@ -18,14 +18,9 @@ window.$ = $;
 window.jQuery = $;
 window.jquery = $;
 
-require('font-awesome/css/font-awesome.css');
 require('bootstrap');
+require('font-awesome/css/font-awesome.css');
 require('./styles/index.css');
-
-const store = redux.createStore(reducers, initialState, redux.compose(
-  redux.applyMiddleware(logger),
-  window.devToolsExtension ? window.devToolsExtension() : f => f
-));
 
 class App extends Component {
   render() {
@@ -38,13 +33,18 @@ class App extends Component {
       //     </div>
       //   </div>
       // </div>
-      <div>
+      <div id="wrapper">
         <Navigation />
         {this.props.children}
       </div>
     );
   }
 }
+
+const store = redux.createStore(reducers, initialState, redux.compose(
+  redux.applyMiddleware(logger),
+  window.devToolsExtension ? window.devToolsExtension() : f => f
+));
 
 ReactDOM.render(
   <Provider store={store}>
