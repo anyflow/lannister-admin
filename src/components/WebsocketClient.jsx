@@ -1,4 +1,5 @@
 import mqtt from 'mqtt';
+import mqtt_regex from 'mqtt-regex';
 import React, {Component} from 'react';
 import ConnectionProfile from './ConnectionProfile';
 import Subscribe from './Subscribe';
@@ -53,7 +54,7 @@ class WebsocketClientPage extends Component {
     switch (status) {
       case 'disconnected':
         this.client = mqtt.connect(this.props.connectionProfile.mqttBrokerAddress, this.makeConnectOptions());
-
+        console.log(this.client);
         this.props.setConnectionStatus('connecting');
 
         this.client.on('connect', () => {
@@ -61,7 +62,12 @@ class WebsocketClientPage extends Component {
         });
         this.client.on('message', (topic, message) => {
           this.props.addMessage(topic, message);
-          this.props.updateMessageCount(topic, ++this.props.subscriptions[topic].count);
+
+          for (let key in this.props.subscriptions) {
+            if (mqtt_regex(key).exec(topic)) {
+              this.props.updateMessageCount(key, ++this.props.subscriptions[key].count);
+            }
+          }
         });
         this.client.on('error', (err) => {
           console.log(err);
