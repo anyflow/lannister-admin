@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 
-require('../styles/Subscription.css');
+require('../../styles/Subscription.css');
 
 class Subscription extends Component {
   constructor(props) {

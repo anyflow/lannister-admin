@@ -17,7 +17,7 @@ class Navbar extends Component {
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <Link to="/websocket_client" className="navbar-brand">Lannister Dashboard</Link>
+          <Link to="/websocket_tester" className="navbar-brand">Lannister Dashboard</Link>
         </div>
 
         <Topbar />

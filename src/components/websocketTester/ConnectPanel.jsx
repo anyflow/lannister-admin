@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import ConnectButton from './ConnectButton';
 
-require('../styles/ConnectPanel.css');
+require('../../styles/ConnectPanel.css');
 
 class ConnectPanel extends Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
-require('../styles/ConnectButton.css');
+require('../../styles/ConnectButton.css');
 
 var data = {
   disconnected: {

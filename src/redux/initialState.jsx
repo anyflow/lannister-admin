@@ -1,8 +1,4 @@
 const initialState = {
-  Hello: {
-    name: 'World'
-  },
-
   WebsocketClient: {
     connectionStatus: 'disconnected',
     connectionProfile: {
@@ -32,7 +28,7 @@ const initialState = {
       //   date: new Date()
       // }
     ],
-  }
+  },
 };
 
 export default initialState;

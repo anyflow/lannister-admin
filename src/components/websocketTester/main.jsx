@@ -7,15 +7,15 @@ import Subscriptions from './Subscriptions';
 import Publish from './Publish';
 import Messages from './Messages';
 import { connect } from 'react-redux';
-import * as actionCreators from '../bases/actionCreators';
+import * as actionCreators from '../../redux/actionCreators';
 
-require('../styles/WebsocketClient.css');
+require('../../styles/WebsocketTester.css');
 
 function mapStateToProps(state) {
   return state.WebsocketClient;
 }
 
-class WebsocketClientPage extends Component {
+class WebsocketTesterPage extends Component {
   constructor(props) {
     super(props);
 
@@ -138,9 +138,9 @@ class WebsocketClientPage extends Component {
   }
 }
 
-const WebsocketClient = connect(
+const WebsocketTester = connect(
   mapStateToProps,
   actionCreators
-)(WebsocketClientPage);
+)(WebsocketTesterPage);
 
-export default WebsocketClient;
+export default WebsocketTester;

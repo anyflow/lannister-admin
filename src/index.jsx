@@ -3,14 +3,18 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as redux from 'redux';
 import { Router, Route, IndexRedirect, browserHistory } from 'react-router';
-import reducers from './bases/reducers';
-import { logger } from './bases/middlewares';
-import Dashboard from './components/Dashboard';
-import WebsocketClient from './components/WebsocketClient';
+import reducers from './redux/reducers';
+import initialState from './redux/initialState';
+import { logger } from './redux/middlewares';
+import Dashboard from './components/dashboard/main';
+import Messages from './components/messages/main';
+import Clients from './components/clients/main';
+import Broker from './components/broker/main';
+import Credential from './components/credential/main';
+import WebsocketTester from './components/websocketTester/main';
 import About from './components/About';
-import Navigation from './components/Navigation';
-// import Navbar from './components/Navbar';
-import initialState from './data/initialState';
+// import Navigation from './components/Navigation';
+import Navbar from './components/Navbar';
 
 import $ from 'jquery';
 
@@ -25,18 +29,18 @@ require('./styles/index.css');
 class App extends Component {
   render() {
     return (
-      // <div id="wrapper">
-      //   <Navbar />
-      //   <div id="page-wrapper">
-      //     <div className="container-fluid">
-      //       {this.props.children}
-      //     </div>
-      //   </div>
-      // </div>
       <div id="wrapper">
-        <Navigation />
-        {this.props.children}
+        <Navbar />
+        <div id="page-wrapper">
+          <div className="container-fluid">
+            {this.props.children}
+          </div>
+        </div>
       </div>
+      // <div id="wrapper">
+      //   <Navigation />
+      //   {this.props.children}
+      // </div>
     );
   }
 }
@@ -50,9 +54,13 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
-        <IndexRedirect to="/websocket_client" />
+        <IndexRedirect to="/websocket_tester" />
         <Route path="dashboard" component={Dashboard} />
-        <Route path="websocket_client" component={WebsocketClient} />
+        <Route path="messages" component={Messages} />
+        <Route path="clients" component={Clients} />
+        <Route path="broker" component={Broker} />
+        <Route path="credential" component={Credential} />
+        <Route path="websocket_tester" component={WebsocketTester} />
         <Route path="about" component={About} />
       </Route>
     </Router>

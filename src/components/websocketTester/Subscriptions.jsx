@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Subscription from './Subscription';
 import { connect } from 'react-redux';
-import * as actionCreators from '../bases/actionCreators';
+import * as actionCreators from '../../redux/actionCreators';
 
 function mapStateToProps(state) {
   return { subscriptions: state.WebsocketClient.subscriptions };

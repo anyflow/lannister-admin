@@ -21,7 +21,7 @@ body {
 @media(min-width:768px) {
     #page-wrapper {
         position: inherit;
-        margin: 0 0 0 165px;
+        margin: 0 0 0 170px;
         padding: 0 0px;
         border-left: 1px solid #e7e7e7;
     }
@@ -98,7 +98,11 @@ body {
     border-bottom: 1px solid #e7e7e7;
 }
 
-.sidebar ul li a.active {
+.sidebar ul li a {
+    color: #777
+}
+
+.sidebar ul li.active {
     background-color: #eee;
 }
 
@@ -131,7 +135,7 @@ body {
     .sidebar {
         z-index: 1;
         position: absolute;
-        width: 165px;
+        width: 170px;
         margin-top: 51px;
     }
 

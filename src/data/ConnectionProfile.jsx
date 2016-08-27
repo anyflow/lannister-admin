@@ -1,5 +1,4 @@
 import * as Immutable from 'immutable';
-import initialState from './initialState';
 
 let basicProfileTemplate = [
   {
