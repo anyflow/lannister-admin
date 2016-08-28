@@ -12,7 +12,7 @@ import * as actionCreators from '../../redux/actionCreators';
 require('../../styles/WebsocketTester.css');
 
 function mapStateToProps(state) {
-  return state.WebsocketClient;
+  return state.WebsocketTester;
 }
 
 class WebsocketTesterPage extends Component {

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../../redux/actionCreators';
 
 function mapStateToProps(state) {
-  return { messages: state.WebsocketClient.messages };
+  return { messages: state.WebsocketTester.messages };
 }
 
 class MessagesComponent extends Component {

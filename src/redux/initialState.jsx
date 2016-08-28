@@ -1,5 +1,5 @@
 const initialState = {
-  WebsocketClient: {
+  WebsocketTester: {
     connectionStatus: 'disconnected',
     connectionProfile: {
       mqttVersion: '3.1.1',
@@ -29,6 +29,15 @@ const initialState = {
       // }
     ],
   },
-};
 
+  Messages: {
+    messageSent: {
+      xAxisUnit: 'second',
+      yAxisUnit: 'count',
+      data: [
+
+      ]
+    },
+  },
+};
 export default initialState;

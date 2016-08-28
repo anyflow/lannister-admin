@@ -1,8 +1,10 @@
 import * as Redux from 'redux';
-import WebsocketClient from './reducers/WebsocketTester';
+import WebsocketTester from './reducers/WebsocketTester';
+import Messages from './reducers/Messages';
 
 const reducers = Redux.combineReducers({
-  WebsocketClient
+  WebsocketTester,
+  Messages
 });
 
 export default reducers;

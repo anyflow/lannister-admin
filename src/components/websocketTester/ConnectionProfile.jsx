@@ -16,7 +16,7 @@ require('react-bootstrap-table/css/react-bootstrap-table-all.min.css');
 require('../../styles/ConnectionProfile.css');
 
 function mapStateToProps(state) {
-  return state.WebsocketClient.connectionProfile;
+  return state.WebsocketTester.connectionProfile;
 }
 
 class ConnectionProfileComponent extends Component {

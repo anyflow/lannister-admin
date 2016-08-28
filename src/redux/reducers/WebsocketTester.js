@@ -2,7 +2,7 @@ import * as Immutable from 'immutable';
 import * as actions from '../actions';
 import initialState from '../initialState';
 
-export default function WebsocketClient(state = initialState.WebsocketClient, action) {
+export default function WebsocketTester(state = initialState.WebsocketTester, action) {
   switch (action.type) {
     case actions.SET_CONNECTION_PROFILE:
       let newState = {};
