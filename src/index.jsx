@@ -12,6 +12,7 @@ import Clients from './components/clients/main';
 import Broker from './components/broker/main';
 import Credential from './components/credential/main';
 import WebsocketTester from './components/websocketTester/main';
+import Apis from './components/apis/main';
 import About from './components/About';
 // import Navigation from './components/Navigation';
 import Navbar from './components/Navbar';
@@ -53,14 +54,15 @@ const store = redux.createStore(reducers, initialState, redux.compose(
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={App}>
-        <IndexRedirect to="/websocket_tester" />
+      <Route path="/admin/" component={App}>
+        <IndexRedirect to="websocket_tester" />
         <Route path="dashboard" component={Dashboard} />
         <Route path="messages" component={Messages} />
         <Route path="clients" component={Clients} />
         <Route path="broker" component={Broker} />
         <Route path="credential" component={Credential} />
         <Route path="websocket_tester" component={WebsocketTester} />
+        <Route path="apis" component={Apis} />
         <Route path="about" component={About} />
       </Route>
     </Router>

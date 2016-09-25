@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../../redux/actionCreators';
 import { basicProfileTemplate, advancedProfileTemplate } from '../../data/ConnectionProfile';
 
-require('react-bootstrap-table/css/react-bootstrap-table-all.min.css');
+require('react-bootstrap-table/css/react-bootstrap-table.css');
 require('../../styles/ConnectionProfile.css');
 
 function mapStateToProps(state) {
