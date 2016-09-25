@@ -6,12 +6,14 @@
   "scripts": {
     "clean": "rimraf dist/",
     "test": "mocha --compilers js:babel-core/register --require ./test/testHelper.js \"test/**/*@(.js|.jsx)\"",
-    "dev": "npm run copy && WEBPACK_ENV=dev ./node_modules/.bin/webpack --inline",
-    "dist": "npm run copy && WEBPACK_ENV=dist ./node_modules/.bin/webpack",
-    "serve:test": "npm run test -- --watch --watch-extensions jsx",
-    "serve:dev": "npm run copy && WEBPACK_ENV=dev webpack-dev-server",
-    "serve:dist": "npm run copy && WEBPACK_ENV=dist webpack-dev-server",
-    "copy": "copyfiles -f ./src/index.html ./dist"
+    "dev": "npm run clean && npm run copy && WEBPACK_ENV=dev ./node_modules/.bin/webpack --inline",
+    "dist": "npm run clean && npm run copy && WEBPACK_ENV=dist ./node_modules/.bin/webpack",
+    "test:run": "npm run clean && npm run test -- --watch --watch-extensions jsx",
+    "dev:run": "npm run clean && npm run copy && WEBPACK_ENV=dev webpack-dev-server",
+    "dist:run": "npm run clean && npm run copy && WEBPACK_ENV=dist webpack-dev-server",
+    "copy": "copyfiles -f ./src/index.html ./dist",
+    "dist:install": "npm run clean && npm run dist && copyfiles -f ./dist/* $INSTALL_PATH",
+    "dist:install:default": "npm run clean && npm run dist && copyfiles -f ./dist/* ../lannister/server/src/main/webapp/admin"
   },
   "author": "Park Hyunjeong",
   "license": "ISC",
