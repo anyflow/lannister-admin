@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 
 class Topbar extends Component {
   render() {
@@ -14,7 +15,7 @@ class Topbar extends Component {
             <li><a href="#"><i className="fa fa-gear fa-fw"></i> Settings</a>
             </li>
             <li className="divider"></li>
-            <li><a href="/dashboard"><i className="fa fa-sign-out fa-fw"></i> Logout</a>
+            <li><Link to="/admin/websocket_tester"><i className="fa fa-sign-out fa-fw"></i> Logout</Link>
             </li>
           </ul>
         </li>

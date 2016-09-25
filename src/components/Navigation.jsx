@@ -22,15 +22,15 @@ class Navigation extends Component {
           </div>
           <div className="collapse navbar-collapse" id="navbar-collapse-target">
             <ul className="nav navbar-nav">
-              <li className={this.classNames('/dashboard')}>
+              <li className={this.classNames('/dashboard') }>
                 <Link to="/dashboard"><i className="fa fa-dashboard fa-fw" /> Dashboard</Link>
               </li>
-              <li className={this.classNames('/websocket_client')}>
+              <li className={this.classNames('/websocket_client') }>
                 <Link to="/websocket_client"><i className="fa fa-desktop fa-fw"/> WebSocket Client</Link>
               </li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
-              <li className={this.classNames('/about')}>
+              <li className={this.classNames('/about') }>
                 <Link to="/about"><i className="fa fa-info fa-fw"/> About</Link>
               </li>
             </ul>
