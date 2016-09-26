@@ -1,5 +1,6 @@
 import Immutable from 'immutable';
 import mqtt from 'mqtt';
+import request from 'request';
 import React, {Component} from 'react';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
@@ -41,6 +42,13 @@ class ConnectionProfileComponent extends Component {
   componentWillMount() {
     this.basicProfile = this._initialize('basicProfile', basicProfileTemplate);
     this.advancedProfile = this._initialize('advancedProfile', advancedProfileTemplate);
+
+    request.post('/api/clients')
+      .on('response', res => {
+        this.props.setConnectionProfile('clientId', res.id);
+      }).on('error', err => {
+        console.log(err);
+      });
   }
 
   _initialize(profileName, profileTemplate) {
