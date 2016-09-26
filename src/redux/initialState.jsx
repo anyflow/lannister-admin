@@ -1,9 +1,10 @@
+
 const initialState = {
   WebsocketTester: {
     connectionStatus: 'disconnected',
     connectionProfile: {
       mqttVersion: '3.1.1',
-      mqttBrokerAddress: 'ws://localhost:9001/mqtt',
+      mqttBrokerAddress: 'ws://' + location.hostname + ':9001/mqtt',
       cleanSession: true,
       clientId: 'sample_clientid',
       userName: 'sample_username',
